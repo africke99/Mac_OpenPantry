@@ -2,23 +2,16 @@ import React from 'react';
 import { IonContent, IonHeader, IonItem, IonLabel, IonNote, IonPage, IonTitle, IonToolbar, IonList } from '@ionic/react';
 import ExploreContainer from '../components/ExploreContainer';
 import './Tab1.css';
+import NumberList from '../components/NumberList';
 
 function  generateNumList(number: number) { 
-  let itemString = ' ';
-  for (let i = 0; i < number; i ++){
-    itemString += '<IonItem> <IonLabel>Item ${i} </IonLabel> </IonItem>';
-      }
-  return itemString;
-  }
-
-  function generateList(number = 5) {
-    return <IonList>${generateNumList(number)}</IonList>;
-    // return `
-    //   <ion-list>
-    //     ${generateNumList(number)}
-    //   </ion-list>
-    // `;
 }
+
+  // function generateList(number: number) {
+    
+  //   numList.map(i => {return (<IonItem> <IonLabel>Item ${i} </IonLabel> </IonItem>)});
+  // }
+  
 
 function getContent() {
   return document.querySelector('ion-content');
@@ -35,7 +28,7 @@ const Tab1: React.FC = () => {
       <IonContent fullscreen>
         
         <p className="ion-padding-start ion-padding-end"> </p>
-        ${generateList(15)}
+        <NumberList number={12}></NumberList>
         <p className="ion-padding-start ion-padding-end"></p>
       </IonContent>
     </IonPage>
