@@ -18,6 +18,7 @@ function getContent() {
 }
 
 const Tab1: React.FC = () => {
+  let food: string[] = ['apple', 'orange', 'banana'];
   return (
     <IonPage>
       <IonHeader>
@@ -28,7 +29,7 @@ const Tab1: React.FC = () => {
       <IonContent fullscreen>
         
         <p className="ion-padding-start ion-padding-end"> </p>
-        <NumberList number={12}></NumberList>
+        <NumberList itemName={food} ></NumberList>
         <p className="ion-padding-start ion-padding-end"></p>
       </IonContent>
     </IonPage>

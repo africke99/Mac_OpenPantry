@@ -8,17 +8,20 @@ import React, { Component, FC } from 'react';
     type Props = {
         number: any;
     };
-    
-    const NumberList: React.FC<Props> = ( props ) => {
-        const { number } = props;
-        let numList = Array.from(Array(number).keys());
+
+    type Item = {
+        itemName: Array<string>;
+    }
+
+    const NumberList: React.FC<Item> = ( item ) => {
+        const { itemName } = item;
+
         return(
             <IonList>
-                {numList.map((i) => {
+                {itemName.map((i) => {
                 return (<IonItem key={i}>
                     
-                <p>number {i}</p>
-                    
+                <p> {i} </p>
                     
                 </IonItem>
                 )})}

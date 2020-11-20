@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonList, IonItem, IonLabel, IonListHeader, IonButton, IonAlert} from '@ionic/react';
 // import { alertController } from 'https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/index.esm.js';
 import './Tab2.css';
 import ExploreContainer from '../components/ExploreContainer';
+
+// export const AlertExample: React.FC = () => {
+//   const [showAlert1, setShowAlert1] = useState(false);
+
 
 export const Tab2: React.FC = () => {
   return (
@@ -47,3 +51,5 @@ export const Tab2: React.FC = () => {
     </IonPage>
   );
 }
+export default Tab2;
+
