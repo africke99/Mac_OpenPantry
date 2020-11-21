@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { IonContent, IonHeader, IonItem, IonLabel, IonNote, IonPage, IonTitle, IonToolbar, IonList } from '@ionic/react';
 import ExploreContainer from '../components/ExploreContainer';
 import './Tab1.css';
@@ -18,6 +18,7 @@ function getContent() {
 }
 
 const Tab1: React.FC = () => {
+  
   let food: string[] = ['apple', 'orange', 'banana'];
   return (
     <IonPage>
