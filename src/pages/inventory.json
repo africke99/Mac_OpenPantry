@@ -1,0 +1,17 @@
+{
+    "canned":
+        {
+            "canned":
+            [
+                {"Name": "beans", "weight": "2"},
+                {"Name": "chick peas", "weight": "3"}
+            ]
+        },
+    "produce":
+        {
+            "produce":
+            [
+                {"Name": "apples", "weight": "4"}
+            ]
+        }
+}
