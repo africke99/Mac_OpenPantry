@@ -3,11 +3,7 @@ import React, { Component, FC, useState } from 'react';
         IonList, IonItem, IonButton, IonAlert
     } from '@ionic/react';
     
-    //import data from '../data/data.json';
     
-    // type Props = {
-    //     number: any;
-    // };
 
     type Item = {
         itemName: Array<string>;
