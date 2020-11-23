@@ -2,12 +2,12 @@
     {
         "category": "canned",
         "name": "chickpeas",
-        "weight": 2
+        "weight": "2 lbs"
 
     },
     {
-        "category": "apples",
-        "name": "granny smith",
-        "weight": 5
+        "category": "produce",
+        "name": "apple",
+        "weight": "5 lbs"
     }
 ]

@@ -4,14 +4,17 @@ import { IonContent, IonHeader, IonItem, IonLabel, IonNote, IonPage, IonTitle, I
 import ExploreContainer from '../components/ExploreContainer';
 import './Tab1.css';
 import NumberList from '../components/NumberList';
-import inventory from './inventory.json';
+import data from './inventory.json';
 //import fs = require("fs");
 
 //import { readFileSync } from "fs";
 //import { writeFile } from "fs";
 
-var cannedVar = inventory[0].category;
-var foodName = inventory[0].name;
+// const inventory = data.map((data) => {
+//       return ()
+// });
+// var cannedVar = inventory[0].category;
+// var foodName = inventory[0].name;
 
 
 //declare function require(path: string):any;
