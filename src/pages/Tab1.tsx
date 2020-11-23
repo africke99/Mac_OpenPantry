@@ -1,14 +1,18 @@
 
 import React, { useState } from 'react';
-import { IonContent, IonHeader, IonItem, IonLabel, IonNote, IonPage, IonTitle, IonToolbar, IonList } from '@ionic/react';
+import { IonContent, IonHeader, IonItem, IonLabel, IonNote, IonPage, IonTitle, IonToolbar, IonList, IonButton } from '@ionic/react';
 import ExploreContainer from '../components/ExploreContainer';
 import './Tab1.css';
 import NumberList from '../components/NumberList';
-import fs = require("fs");
-import { readFileSync } from "fs";
-import { writeFile } from "fs";
+import inventory from './inventory.json';
+//import fs = require("fs");
 
-//import * as inventory from './inventory.json';
+//import { readFileSync } from "fs";
+//import { writeFile } from "fs";
+
+var cannedVar = inventory[0].category;
+var foodName = inventory[0].name;
+
 
 //declare function require(path: string):any;
 //function changeInventory(food: string, weight: number){
@@ -20,17 +24,17 @@ import { writeFile } from "fs";
 //    }
 //}
 
-var invenContent = readFileSync('inventory.json');
-var words = JSON.parse(invenContent);
+//var invenContent = readFileSync('inventory.json');
+//var words = JSON.parse(invenContent);
 
 function changeInventory(food: string){
 
-    words[food] = 1;
-    var data = JSON.stringify(words);
-    fs.writeFile('inventory.json',data);
+    //words[food] = 1;
+    //var data = JSON.stringify(words);
+    //fs.writeFile('inventory.json',data);
 }
 
-function  generateNumList(number: number) { 
+function  generateNumList(number: number) {
 }
 
   // function generateList(number: number) {
@@ -44,7 +48,8 @@ function getContent() {
 }
 
 const Tab1: React.FC = () => {
-  
+
+  let fromFile: string[] = [cannedVar, foodName];
   let food: string[] = ['apple', 'orange', 'banana'];
   return (
     <IonPage>
@@ -54,9 +59,9 @@ const Tab1: React.FC = () => {
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
-        <button onClick={this.changeInventory("test")}>test button</button>
+        <IonButton color= "danger">{cannedVar}</IonButton>
         <p className="ion-padding-start ion-padding-end"> </p>
-        <NumberList itemName={food} ></NumberList>
+        <NumberList itemName={fromFile} ></NumberList>
         <p className="ion-padding-start ion-padding-end"></p>
       </IonContent>
     </IonPage>

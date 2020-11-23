@@ -1,17 +1,13 @@
-{
-    "canned":
-        {
-            "canned":
-            [
-                {"Name": "beans", "weight": "2"},
-                {"Name": "chick peas", "weight": "3"}
-            ]
-        },
-    "produce":
-        {
-            "produce":
-            [
-                {"Name": "apples", "weight": "4"}
-            ]
-        }
-}
+[
+    {
+        "category": "canned",
+        "name": "chickpeas",
+        "weight": 2
+
+    },
+    {
+        "category": "apples",
+        "name": "granny smith",
+        "weight": 5
+    }
+]
