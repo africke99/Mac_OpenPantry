@@ -1,7 +1,9 @@
 import React, { Component, FC, useState } from 'react';
-    import {
+import { Link, RouteComponentProps } from 'react-router-dom';
+import {
         IonList, IonItem, IonButton, IonAlert
     } from '@ionic/react';
+
     
     
 
@@ -35,8 +37,12 @@ import React, { Component, FC, useState } from 'react';
                         },
                         {
                             text: 'Cart',
+                            onClick= {e  => {
+                                e.preventDefault()
+                                history.push('/dashboad/tab3/3');
+                            }
+                            }
                             handler: () => {
-                                
                                 console.log("Check out to Cart");
                             }
                         }
