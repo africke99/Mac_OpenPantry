@@ -20,12 +20,11 @@ const Tab3: React.FC = () => {
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
-      {/* <IonList style= "text-align:center"> */}
         <section>
           <header>Block Width</header>
-          <IonButton slot = "middle" size= "small">Check Out</IonButton>
+          <IonButton type = 'submit' size= "small">Check Out</IonButton>
+          <IonButton href="https://www.google.com" target="_blank" >Looking For An Item?</IonButton>
         </section>
-        {/* </IonList> */}
 
         <IonHeader collapse="condense">
           <IonToolbar>

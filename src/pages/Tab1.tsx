@@ -10,12 +10,7 @@ import data from './inventory.json';
 //import { readFileSync } from "fs";
 //import { writeFile } from "fs";
 
-// const inventory = data.map((data) => {
-//       return ()
-// });
-// var cannedVar = inventory[0].category;
-// var foodName = inventory[0].name;
-
+const inventory= data.map((x) => {return (x.name)} );
 
 //declare function require(path: string):any;
 //function changeInventory(food: string, weight: number){
@@ -52,8 +47,6 @@ function getContent() {
 
 const Tab1: React.FC = () => {
 
-  let fromFile: string[] = [cannedVar, foodName];
-  let food: string[] = ['apple', 'orange', 'banana'];
   return (
     <IonPage>
       <IonHeader>
@@ -62,9 +55,8 @@ const Tab1: React.FC = () => {
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
-        <IonButton color= "danger">{cannedVar}</IonButton>
         <p className="ion-padding-start ion-padding-end"> </p>
-        <NumberList itemName={fromFile} ></NumberList>
+        <NumberList itemName={inventory} ></NumberList>
         <p className="ion-padding-start ion-padding-end"></p>
       </IonContent>
     </IonPage>

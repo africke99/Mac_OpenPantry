@@ -7,7 +7,10 @@
     },
     {
         "category": "produce",
-        "name": "apple",
+        "name": "apples",
         "weight": "5 lbs"
-    }
+    },
+    {   "category": "produce",
+        "name": "oranges",
+        "weight": "10 lbs"}
 ]
