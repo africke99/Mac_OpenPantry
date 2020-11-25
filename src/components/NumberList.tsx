@@ -37,11 +37,6 @@ import {
                         },
                         {
                             text: 'Cart',
-                            onClick= {e  => {
-                                e.preventDefault()
-                                history.push('/dashboad/tab3/3');
-                            }
-                            }
                             handler: () => {
                                 console.log("Check out to Cart");
                             }

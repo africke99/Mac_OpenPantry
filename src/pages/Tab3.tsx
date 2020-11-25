@@ -1,5 +1,5 @@
 import React from 'react';
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonAlert, IonButton, IonList } from '@ionic/react';
+import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonAlert, IonButton, IonList, IonItem, IonLabel } from '@ionic/react';
 import ExploreContainer from '../components/ExploreContainer';
 import './Tab3.css';
 
@@ -15,15 +15,22 @@ const Tab3: React.FC = () => {
     <IonPage>
       <IonHeader>
         <IonToolbar>
-          <IonTitle> My Cart </IonTitle>
+          <IonTitle> My Bag</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
+      
+      <IonList>
+        <IonItem text-center>
+        <IonLabel>
         <section>
-          <header>Block Width</header>
+          <header>To Fill In... </header>
           <IonButton type = 'submit' size= "small">Check Out</IonButton>
-          <IonButton href="https://www.google.com" target="_blank" >Looking For An Item?</IonButton>
+          <IonButton href="https://forms.gle/qGqbk51g29aHukW27" target="_blank" >Looking For An Item?</IonButton>
         </section>
+        </IonLabel>
+        </IonItem>
+      </IonList>
 
         <IonHeader collapse="condense">
           <IonToolbar>
