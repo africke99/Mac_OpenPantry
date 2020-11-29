@@ -34,7 +34,21 @@ import '@ionic/react/css/display.css';
 /* Theme variables */
 import './theme/variables.css';
 
-// import './Firebase/firebase';
+//firebase test below:
+// import Firebase from 'firebase';
+// import config from '../src/components/Firebase/firebase.js';
+
+
+// class App extends React.Component {
+
+//   constructor(props: {} | Readonly<{}>){
+//     super(props);
+//     Firebase.initializeApp(config.firebase);
+
+//     this.state = {
+//       developers: []
+//     }
+//   }
 
 const App: React.FC = () => (
   <IonApp>
