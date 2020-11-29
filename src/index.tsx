@@ -7,9 +7,9 @@ import Firebase from './components/Firebase';
 
 
 ReactDOM.render(
-    <FirebaseContext.Provider value={new Firebase()}>
+    // <FirebaseContext.Provider value={new Firebase()}>
         <App />,
-    </FirebaseContext.Provider>,
+    // </FirebaseContext.Provider>,
     document.getElementById('root'),);
 
 serviceWorker.unregister();

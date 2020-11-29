@@ -1,4 +1,5 @@
 import React from 'react';
+import 'firebase/firestore';
  
 const FirebaseContext = React.createContext(null);
  
