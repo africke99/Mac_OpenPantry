@@ -23,11 +23,11 @@ const Tab3: React.FC = () => {
       <IonList>
         <IonItem text-center>
         <IonLabel>
-        <section>
           <header>To Fill In... </header>
+          <section>
           <IonButton type = 'submit' size= "small">Check Out</IonButton>
           <IonButton href="https://forms.gle/qGqbk51g29aHukW27" target="_blank" >Looking For An Item?</IonButton>
-        </section>
+          </section>
         </IonLabel>
         </IonItem>
       </IonList>
