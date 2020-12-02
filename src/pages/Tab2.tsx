@@ -5,74 +5,62 @@ import './Tab2.css';
 import ExploreContainer from '../components/ExploreContainer';
 import { db } from '../components/Firebase/firebase2.js';
 import { stringify } from 'querystring';
+import NumberList from '../components/NumberList';
 // export const AlertExample: React.FC = () => {
 //   const [showAlert1, setShowAlert1] = useState(false);
 
 
 
+const collectionNames: Array<string> = ["Beans and Protein",
+"Beverages", "Bread and Tortillas", "Canned Fruits and Vegetables",
+"Flour, Oil, Spices", "Oatmeal and Cereal", "Personal Care",
+"Produce", "Rice and Pasta", "Sauces", "Snacks","Soups and Broth"];
 
-
-//doing something good\/\/\/\/\/
-
-function yetAgain(): Array<string> {
+//https://firebase.google.com/docs/firestore/query-data/get-data
+//used firebase documentation as a guide for below function
+function returnAllDocs(col:string): Array<string> {
   //let test: Array<string>=["",""]; 
-  var test:string[] = new Array(11);
+  var returnArray:string[] = new Array(11);
   let i: number = 0;
-  db.collection("Produce").get().then(function(querySnapshot) {
+  db.collection(col).get().then(function(querySnapshot) {
     querySnapshot.forEach(function(doc) {
-        // doc.data() is never undefined for query doc snapshots
-        test[i]=doc.id;
+        returnArray[i]= doc.id;
         i++;
-    });});
-    return test;
-
+        
+    });
+    console.log(returnArray);
+  });
+  console.log(returnArray);   
+  return returnArray;
+  
 }
 
 
-let testing = yetAgain();
+
+let arrayOfDocs = returnAllDocs("Category Names");
+
+//let docArray = returnAllDocs(arrayOfDocs[0]);
+//console.log(arrayOfDocs[0]);
+
 
 
 export const Tab2: React.FC = () => {
   return (
-    <IonPage>
-      <IonHeader>
-        <IonToolbar>
-          <IonTitle>Pantry Items</IonTitle>
-        </IonToolbar>
-      </IonHeader>
-      <IonContent fullscreen>
-        <IonList>
-          <IonListHeader>
-            Canned Goods
-          </IonListHeader>
-        </IonList>
-        <IonList>
-          <IonItem>
-            <IonButton slot= "end" color= "danger"> Add Item </IonButton> 
-            <IonLabel>{testing[0]}</IonLabel>
-          </IonItem>
-          <IonItem>
-            <IonLabel>{testing[1]}</IonLabel>
-          </IonItem>
-          <IonItem>
-            <IonLabel>{testing[2]}</IonLabel>
-          </IonItem>
-          <IonItem>
-           <IonLabel>{testing[3]}</IonLabel>
-          </IonItem>
-          <IonItem>
-            <IonLabel>{testing[4]}</IonLabel>
-          </IonItem>
-        </IonList> 
-        <IonHeader collapse="condense">
+      <IonPage>
+        <IonHeader>
           <IonToolbar>
-            <IonTitle size="large">Tab 2</IonTitle>
+            <IonTitle>Pantry Inventory</IonTitle>
           </IonToolbar>
         </IonHeader>
-        <ExploreContainer name="Tab 2 page" />
-      </IonContent>
-    </IonPage>
-  );
-}
+        <IonContent fullscreen>
+        {/* <IonButton slot= "end" color= "danger" ></IonButton>  */}
+          <p className="ion-padding-start ion-padding-end"> </p>
+          <NumberList itemName={arrayOfDocs} ></NumberList>
+          <p className="ion-padding-start ion-padding-end"></p>
+        
+        </IonContent>
+      </IonPage>
+    );
+  };
 export default Tab2;
 
