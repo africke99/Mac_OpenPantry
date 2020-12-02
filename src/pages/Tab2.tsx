@@ -3,9 +3,33 @@ import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonList, IonItem,
 // import { alertController } from 'https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/index.esm.js';
 import './Tab2.css';
 import ExploreContainer from '../components/ExploreContainer';
-
+import { db } from '../components/Firebase/firebase2.js';
+import { stringify } from 'querystring';
 // export const AlertExample: React.FC = () => {
 //   const [showAlert1, setShowAlert1] = useState(false);
+
+
+
+
+
+//doing something good\/\/\/\/\/
+
+function yetAgain(): Array<string> {
+  //let test: Array<string>=["",""]; 
+  var test:string[] = new Array(11);
+  let i: number = 0;
+  db.collection("Produce").get().then(function(querySnapshot) {
+    querySnapshot.forEach(function(doc) {
+        // doc.data() is never undefined for query doc snapshots
+        test[i]=doc.id;
+        i++;
+    });});
+    return test;
+
+}
+
+
+let testing = yetAgain();
 
 
 export const Tab2: React.FC = () => {
@@ -22,23 +46,22 @@ export const Tab2: React.FC = () => {
             Canned Goods
           </IonListHeader>
         </IonList>
-
         <IonList>
           <IonItem>
             <IonButton slot= "end" color= "danger"> Add Item </IonButton> 
-            <IonLabel>Chick Pea</IonLabel>
+            <IonLabel>{testing[0]}</IonLabel>
           </IonItem>
           <IonItem>
-            <IonLabel>Mega Man X</IonLabel>
+            <IonLabel>{testing[1]}</IonLabel>
           </IonItem>
           <IonItem>
-            <IonLabel>The Legend of Zelda</IonLabel>
+            <IonLabel>{testing[2]}</IonLabel>
           </IonItem>
           <IonItem>
-           <IonLabel>Pac-Man</IonLabel>
+           <IonLabel>{testing[3]}</IonLabel>
           </IonItem>
           <IonItem>
-            <IonLabel>Super Mario World</IonLabel>
+            <IonLabel>{testing[4]}</IonLabel>
           </IonItem>
         </IonList> 
         <IonHeader collapse="condense">
