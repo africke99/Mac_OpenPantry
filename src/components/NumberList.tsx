@@ -36,8 +36,6 @@ import {
         
       //for each 
         
-      let arrayOfItems = returnAllDocs("Item Names");
-
     //----------------------------------------------------------------
     type Item = {
         ItemName: Array<string>;
@@ -65,12 +63,17 @@ import {
         
     };
 
+    let arrayOfItems = returnAllDocs(i.stringify);  //// need to figure out how to create this variable AFTER the 
+    //CategoryName.map is created.... because we need to pass each collection name to itemlist as it is displayed
+    //by Numberlist
+
+
     //--------------------------------------------------------------------
 
     const NumberList: React.FC<Category> = ( category ) => {
         const [showAlert1, setShowAlert1] = useState(false);
         const { CategoryName } = category;
-    
+        
         return(
             <IonList>
                 {CategoryName.map((i) => {
