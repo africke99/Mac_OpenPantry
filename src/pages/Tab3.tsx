@@ -23,18 +23,17 @@ const Tab3: React.FC = () => {
       <IonList>
         <IonItem text-center>
         <IonLabel>
-        <section>
-          <header>To Fill In... </header>
-          <IonButton type = 'submit' size= "small">Check Out</IonButton>
-          <IonButton href="https://forms.gle/qGqbk51g29aHukW27" target="_blank" >Looking For An Item?</IonButton>
-        </section>
+          <div className = "padding"> 
+            <IonButton href= "https://forms.gle/yjcNm1owrxcMzsxx7" target= "_blank"> Check Out</IonButton>
+            <IonButton href="https://forms.gle/qGqbk51g29aHukW27" target="_blank">Looking For An Item?</IonButton>
+          </div>
         </IonLabel>
         </IonItem>
       </IonList>
 
         <IonHeader collapse="condense">
           <IonToolbar>
-            <IonTitle size="large">Tab 3</IonTitle>
+            <IonTitle size="large">My Bag</IonTitle>
           </IonToolbar>
         </IonHeader>
         <ExploreContainer name="Tab 3 page" />
