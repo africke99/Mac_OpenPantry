@@ -7,6 +7,7 @@ import NumberList from '../components/NumberList';
 import data from './inventory.json';
 import { db } from '../components/Firebase/firebase2.js';
 
+
 //import fs = require("fs");
 
 //import { readFileSync } from "fs";
@@ -14,16 +15,19 @@ import { db } from '../components/Firebase/firebase2.js';
 
 //https://sebhastian.com/react-firestore/ TESTING WITH THIS TUTORIAL
 const inventory= data.map((x) => {return (x.name)} );
+console.log(inventory);
 
-db.collection("Pasta").doc("Spaghetti").set({
-    name: "Barillo"
-})
-.then(function() {
-    console.log("Document successfully written?!");
-})
-.catch(function(error) {
-    console.error("Error writing: ", error);
-});
+
+
+// db.collection("Pasta").doc("Spaghetti").set({
+//     name: "Barillo"
+// })
+// .then(function() {
+//     console.log("Document successfully written?!");
+// })
+// .catch(function(error) {
+//     console.error("Error writing: ", error);
+// });
 
 
 //declare function require(path: string):any;
@@ -63,15 +67,16 @@ const Tab1: React.FC = () => {
 
   return (
     <IonPage>
-      <IonHeader>
+      
+      <IonContent fullscreen>
+      
         <IonToolbar>
           <IonTitle>Pantry Inventory</IonTitle>
         </IonToolbar>
-      </IonHeader>
-      <IonContent fullscreen>
+      
       {/* <IonButton slot= "end" color= "danger" ></IonButton>  */}
         <p className="ion-padding-start ion-padding-end"> </p>
-        <NumberList itemName={inventory} ></NumberList>
+        <NumberList itemName={data.map((x) => {return (x.name)} )} ></NumberList>
         <p className="ion-padding-start ion-padding-end"></p>
       </IonContent>
     </IonPage>

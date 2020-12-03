@@ -1,5 +1,5 @@
 import FirebaseContext from './context.js';
-import Firebase from './firebase.js';
+import Firebase from './src/components/Firebase/Firebase.js';
  
 export default Firebase; 
  

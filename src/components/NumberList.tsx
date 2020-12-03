@@ -1,7 +1,7 @@
 import React, { Component, FC, useState } from 'react';
 import { Link, RouteComponentProps } from 'react-router-dom';
 import {
-        IonList, IonItem, IonButton, IonAlert
+        IonList, IonItem, IonButton, IonAlert, IonListHeader
     } from '@ionic/react';
 
     
@@ -17,7 +17,7 @@ import {
         return(
             <IonList>
                 {itemName.map((i) => {
-                return (
+                return (    
                 <IonItem key={i}>
                 <p> {i} </p>
                 <IonButton slot= "end" color= "danger" onClick={() => setShowAlert1(true)} expand="block">Add Item </IonButton> 
