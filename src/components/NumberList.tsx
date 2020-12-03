@@ -31,7 +31,7 @@ import {
                         </IonLabel>
                     </IonListHeader>
                 <IonItem key={i}>
-                <p> header description </p>
+                <p> ...this is where items will go </p>
                 <IonButton slot= "end" color= "danger" onClick={() => setShowAlert1(true)} expand="block">Add Item </IonButton> 
                 <IonAlert
                     isOpen={showAlert1}
