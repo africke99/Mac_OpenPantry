@@ -28,6 +28,18 @@ function yetAgain(): Array<string> {
 
 }
 
+// function getFieldData(): Array<number> {
+//   var weight:number[] = new Array(11);
+//   let i = 0;
+//   db.collection("Produce").doc("weight").get().then(function(querySnapshot) {
+//     querySnapshot.forEach(function(doc) {
+//       weight[i]=doc.id;
+//       i++;
+//     }
+//   });});
+//   return weight
+// }
+
 
 let testing = yetAgain();
 
