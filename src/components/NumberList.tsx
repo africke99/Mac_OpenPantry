@@ -1,7 +1,11 @@
 import React, { Component, FC, useState } from 'react';
 import { Link, RouteComponentProps } from 'react-router-dom';
 import {
+<<<<<<< HEAD
+        IonList, IonItem, IonButton, IonAlert, IonListHeader
+=======
         IonList, IonItem, IonButton, IonAlert, IonListHeader, IonLabel, IonHeader
+>>>>>>> 3fa8f0c6b671ecd596e992b9c6bb9d689b87f31f
     } from '@ionic/react';
 
     
@@ -23,6 +27,9 @@ import {
         return(
             <IonList>
                 {itemName.map((i) => {
+<<<<<<< HEAD
+                return (    
+=======
                 return (
                 <IonList>
                     <IonListHeader>
@@ -30,6 +37,7 @@ import {
                             {i}
                         </IonLabel>
                     </IonListHeader>
+>>>>>>> 3fa8f0c6b671ecd596e992b9c6bb9d689b87f31f
                 <IonItem key={i}>
                 <p> ...this is where items will go </p>
                 <IonButton slot= "end" color= "danger" onClick={() => setShowAlert1(true)} expand="block">Add Item </IonButton> 
