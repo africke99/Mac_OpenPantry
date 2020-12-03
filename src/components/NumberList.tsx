@@ -1,7 +1,7 @@
 import React, { Component, FC, useState } from 'react';
 import { Link, RouteComponentProps } from 'react-router-dom';
 import {
-        IonList, IonItem, IonButton, IonAlert
+        IonList, IonItem, IonButton, IonAlert, IonListHeader, IonLabel, IonHeader
     } from '@ionic/react';
 
     
@@ -10,6 +10,12 @@ import {
     type Item = {
         itemName: Array<string>;
     }
+
+    // function iterateList(list:Array<string>){
+    //     for
+    // }
+
+
     const NumberList: React.FC<Item> = ( item ) => {
         const [showAlert1, setShowAlert1] = useState(false);
         const { itemName } = item;
@@ -18,8 +24,14 @@ import {
             <IonList>
                 {itemName.map((i) => {
                 return (
+                <IonList>
+                    <IonListHeader>
+                        <IonLabel>
+                            {i}
+                        </IonLabel>
+                    </IonListHeader>
                 <IonItem key={i}>
-                <p> {i} </p>
+                <p> header description </p>
                 <IonButton slot= "end" color= "danger" onClick={() => setShowAlert1(true)} expand="block">Add Item </IonButton> 
                 <IonAlert
                     isOpen={showAlert1}
@@ -45,6 +57,7 @@ import {
                     />
                   
                 </IonItem>
+                </IonList>
                 )})}
                 
             </IonList>
