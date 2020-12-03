@@ -18,11 +18,11 @@ const collectionNames: Array<string> = ["Beans and Protein",
 
 //https://firebase.google.com/docs/firestore/query-data/get-data
 //used firebase documentation as a guide for below function
-function returnAllDocs(col:string): Array<string> {
+function returnAllDocs(collection:string): Array<string> {
   //let test: Array<string>=["",""]; 
   var returnArray:string[] = new Array(11);
   let i: number = 0;
-  db.collection(col).get().then(function(querySnapshot) {
+  db.collection(collection).get().then(function(querySnapshot) {
     querySnapshot.forEach(function(doc) {
         returnArray[i]= doc.id;
         i++;
@@ -35,25 +35,15 @@ function returnAllDocs(col:string): Array<string> {
   
 }
 
-// function getFieldData(): Array<number> {
-//   var weight:number[] = new Array(11);
-//   let i = 0;
-//   db.collection("Produce").doc("weight").get().then(function(querySnapshot) {
-//     querySnapshot.forEach(function(doc) {
-//       weight[i]=doc.id;
-//       i++;
-//     }
-//   });});
-//   return weight
-// }
-
-
-
+// function getDocData(col:string): <string>() {}
+  
+//for each 
+  
 let arrayOfDocs = returnAllDocs("Category Names");
+
 
 //let docArray = returnAllDocs(arrayOfDocs[0]);
 //console.log(arrayOfDocs[0]);
-
 
 
 export const Tab2: React.FC = () => {
@@ -67,7 +57,7 @@ export const Tab2: React.FC = () => {
         <IonContent fullscreen>
         {/* <IonButton slot= "end" color= "danger" ></IonButton>  */}
           <p className="ion-padding-start ion-padding-end"> </p>
-          <NumberList itemName={arrayOfDocs} ></NumberList>
+          <NumberList CategoryName={arrayOfDocs} ></NumberList>
           <p className="ion-padding-start ion-padding-end"></p>
         
         </IonContent>

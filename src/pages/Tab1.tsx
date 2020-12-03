@@ -76,7 +76,7 @@ const Tab1: React.FC = () => {
       
       {/* <IonButton slot= "end" color= "danger" ></IonButton>  */}
         <p className="ion-padding-start ion-padding-end"> </p>
-        <NumberList itemName={data.map((x) => {return (x.name)} )} ></NumberList>
+        <NumberList CategoryName={data.map((x) => {return (x.name)} )} ></NumberList>
         <p className="ion-padding-start ion-padding-end"></p>
       </IonContent>
     </IonPage>

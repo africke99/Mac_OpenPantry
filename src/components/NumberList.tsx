@@ -1,45 +1,91 @@
 import React, { Component, FC, useState } from 'react';
 import { Link, RouteComponentProps } from 'react-router-dom';
+import { db } from '../components/Firebase/firebase2.js';
 import {
-<<<<<<< HEAD
-        IonList, IonItem, IonButton, IonAlert, IonListHeader
-=======
         IonList, IonItem, IonButton, IonAlert, IonListHeader, IonLabel, IonHeader
->>>>>>> 3fa8f0c6b671ecd596e992b9c6bb9d689b87f31f
-    } from '@ionic/react';
+    } from '@ionic/react';   
 
-    
-    
-
-    type Item = {
-        itemName: Array<string>;
+    type Category = {
+        CategoryName: Array<string>;
     }
 
     // function iterateList(list:Array<string>){
     //     for
     // }
 
+    //----------------------------------------------------------------
 
-    const NumberList: React.FC<Item> = ( item ) => {
+    function returnAllDocs(collection:string): Array<string> {
+        //let test: Array<string>=["",""]; 
+        var returnArray:string[] = new Array(11);
+        let i: number = 0;
+        db.collection(collection).get().then(function(querySnapshot) {
+          querySnapshot.forEach(function(doc) {
+              returnArray[i]= doc.id;
+              i++;
+              
+          });
+          console.log(returnArray);
+        });
+        console.log(returnArray);   
+        return returnArray;
+        
+      }
+      
+      // function getDocData(col:string): <string>() {}
+        
+      //for each 
+        
+      let arrayOfItems = returnAllDocs("Item Names");
+
+    //----------------------------------------------------------------
+    type Item = {
+        ItemName: Array<string>;
+    }
+    const ItemList: React.FC<Item> = ( item ) => {
+        const { ItemName } = item;
+
+        return(
+            <IonList>
+                {ItemName.map((y) => {
+                return (
+            <IonList>
+                    <IonListHeader>
+                        <IonLabel>
+                            {y}
+                        </IonLabel>
+                    </IonListHeader>
+                <IonItem key={y}></IonItem>          
+                </IonList>
+                )})}
+                
+            </IonList>
+            
+        );
+        
+    };
+
+    //--------------------------------------------------------------------
+
+    const NumberList: React.FC<Category> = ( category ) => {
         const [showAlert1, setShowAlert1] = useState(false);
-        const { itemName } = item;
+        const { CategoryName } = category;
     
         return(
             <IonList>
-                {itemName.map((i) => {
-<<<<<<< HEAD
+                {CategoryName.map((i) => {
                 return (    
-=======
-                return (
+                
                 <IonList>
                     <IonListHeader>
                         <IonLabel>
                             {i}
                         </IonLabel>
                     </IonListHeader>
->>>>>>> 3fa8f0c6b671ecd596e992b9c6bb9d689b87f31f
                 <IonItem key={i}>
                 <p> ...this is where items will go </p>
+                <ItemList ItemName={arrayOfItems} ></ItemList>
+                <p> TEST </p>
                 <IonButton slot= "end" color= "danger" onClick={() => setShowAlert1(true)} expand="block">Add Item </IonButton> 
                 <IonAlert
                     isOpen={showAlert1}
