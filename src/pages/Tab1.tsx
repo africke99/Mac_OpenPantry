@@ -76,7 +76,11 @@ const Tab1: React.FC = () => {
       
       {/* <IonButton slot= "end" color= "danger" ></IonButton>  */}
         <p className="ion-padding-start ion-padding-end"> </p>
+<<<<<<< HEAD
         <NumberListRecover itemName={data.map((x) => {return (x.name)} )} ></NumberListRecover>
+=======
+        <NumberList item={inventory} ></NumberList>
+>>>>>>> 3f0d0b622c1b6c18ac6faab91394372104a8654c
         <p className="ion-padding-start ion-padding-end"></p>
       </IonContent>
     </IonPage>
