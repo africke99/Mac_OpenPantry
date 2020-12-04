@@ -1,5 +1,7 @@
 import React, { Component, FC, useState } from 'react';
 import { Link, RouteComponentProps } from 'react-router-dom';
+import { db } from '../components/Firebase/firebase2.js';
+import { stringify } from 'querystring';
 import {
 
 
@@ -19,10 +21,11 @@ import {
     // }
 
 
+
     const NumberList: React.FC<Item> = ( item ) => {
         const [showAlert1, setShowAlert1] = useState(false);
         const { itemName } = item;
-    
+        
         return(
             <IonList>
                 {itemName.map((i) => {
