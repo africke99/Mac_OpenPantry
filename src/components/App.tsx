@@ -13,10 +13,12 @@ import {
   IonTabButton,
   IonTabs,
   IonTitle,
-  IonToolbar
+  IonToolbar, 
+  IonFab,
+  IonFabButton
 } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-import { basketOutline, basketSharp, ellipse, fastFoodOutline, fileTrayFullOutline, square, triangle } from 'ionicons/icons';
+import { help, basketOutline, basketSharp, ellipse, fastFoodOutline, fileTrayFullOutline, square, triangle } from 'ionicons/icons';
 import Tab1 from '../pages/Tab1';
 import Tab2 from '../pages/Tab2';
 import Tab3 from '../pages/Tab3';
@@ -58,12 +60,17 @@ import '../theme/variables.css';
 
 const App: React.FC = () => (
   <IonApp>
-  
- 
+
         <IonToolbar>
           <IonTitle>Macalester Pantry</IonTitle>
         </IonToolbar>
-     
+
+{/* // Create a popup message with the help  icon so we only have checkout on the bottom. */}
+        <IonFab horizontal="end" vertical= "center" slot= "fixed" edge>
+          <IonFabButton> 
+            <IonIcon icon={help} />
+          </IonFabButton>
+        </IonFab>
      
         <IonReactRouter>
         <IonTabs>

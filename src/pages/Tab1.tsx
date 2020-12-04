@@ -1,11 +1,12 @@
 
 import React, { useState } from 'react';
-import { IonContent, IonHeader, IonItem, IonLabel, IonNote, IonPage, IonTitle, IonToolbar, IonList, IonButton } from '@ionic/react';
+import { IonContent, IonHeader, IonItem, IonLabel, IonNote, IonPage, IonTitle, IonToolbar, IonList, IonButton, IonFab, IonIcon, IonFabButton } from '@ionic/react';
 import ExploreContainer from '../components/ExploreContainer';
 import './Tab1.css';
-import NumberList from '../components/NumberList';
+import NumListRecover from '../components/NumListRecover';
 import data from './inventory.json';
 import { db } from '../components/Firebase/firebase2.js';
+
 
 
 //import fs = require("fs");
@@ -58,7 +59,6 @@ function  generateNumList(number: number) {
   //   numList.map(i => {return (<IonItem> <IonLabel>Item ${i} </IonLabel> </IonItem>)});
   // }
   
-
 function getContent() {
   return document.querySelector('ion-content');
 }
@@ -69,14 +69,25 @@ const Tab1: React.FC = () => {
     <IonPage>
       
       <IonContent fullscreen>
-      
+          
         <IonToolbar>
           <IonTitle>Pantry Inventory</IonTitle>
         </IonToolbar>
+
+        <IonList>
+        <IonItem text-center>
+        <IonLabel>
+          <div className = "padding"> 
+            <IonButton href="https://forms.gle/qGqbk51g29aHukW27" target="_blank">Looking For An Item?</IonButton>
+            <IonButton href= "https://forms.gle/yjcNm1owrxcMzsxx7" target= "_blank"> Check Out</IonButton>
+          </div>
+        </IonLabel>
+        </IonItem>
+      </IonList>
       
-      {/* <IonButton slot= "end" color= "danger" ></IonButton>  */}
+      <IonButton slot= "end" color= "danger" ></IonButton>
         <p className="ion-padding-start ion-padding-end"> </p>
-        <NumberList CategoryName={data.map((x) => {return (x.name)} )} ></NumberList>
+        <NumListRecover itemName={data.map((x) => {return (x.name)} )} ></NumListRecover>
         <p className="ion-padding-start ion-padding-end"></p>
       </IonContent>
     </IonPage>
