@@ -5,7 +5,7 @@ import './Tab2.css';
 import ExploreContainer from '../components/ExploreContainer';
 import { db } from '../components/Firebase/firebase2.js';
 import { stringify } from 'querystring';
-import NumberList from '../components/NumberList';
+import NumberListRecover from '../components/NumListRecover';
 // export const AlertExample: React.FC = () => {
 //   const [showAlert1, setShowAlert1] = useState(false);
 
@@ -57,7 +57,7 @@ export const Tab2: React.FC = () => {
         <IonContent fullscreen>
         {/* <IonButton slot= "end" color= "danger" ></IonButton>  */}
           <p className="ion-padding-start ion-padding-end"> </p>
-          <NumberList CategoryName={arrayOfDocs} ></NumberList>
+          <NumberListRecover itemName={arrayOfDocs} ></NumberListRecover>
           <p className="ion-padding-start ion-padding-end"></p>
         
         </IonContent>
