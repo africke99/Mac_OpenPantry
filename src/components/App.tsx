@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Redirect, Route } from 'react-router-dom';
 import {
   IonApp,
@@ -18,10 +18,13 @@ import {
   IonFabButton,
   IonContent,
   IonButton,
-  IonModal
+  IonModal,
+  IonItem,
+  IonText,
+  IonRouterLink
 } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-import { help, basketOutline, basketSharp, ellipse, fastFoodOutline, fileTrayFullOutline, square, triangle } from 'ionicons/icons';
+import { close, help, basketOutline, basketSharp, ellipse, fastFoodOutline, fileTrayFullOutline, square, triangle } from 'ionicons/icons';
 import Tab1 from '../pages/Tab1';
 import Tab2 from '../pages/Tab2';
 import Tab3 from '../pages/Tab3';
@@ -61,33 +64,17 @@ import '../theme/variables.css';
 //     }
 //   }
 
-function presentMessage() {
-  // creates the modal w modal page component
-  const modalElement = document.createElement('ion-modal');
-  modalElement.component = 'modal-page';
-  modalElement.cssClass = 'my-custom-class';
+const App: React.FC = () => {
 
-  // present the modal
-  document.body.appendChild(modalElement);
-  return modalElement.present();
+  const [questionModal, setQuestionModal] = useState({ isOpen: false });
 
-}
-
-// async function dismissModal() {
-//   await modal.dismiss({
-//   'dismissed': true
-//   });
-  
-//   }
-
-
-const App: React.FC = () => (
+  return(
   <IonApp>
     <IonHeader>
       <IonToolbar>
         <IonTitle>Macalester Pantry</IonTitle>
         <IonButtons slot="end">
-          <IonButton color="tertiary">
+          <IonButton color="tertiary"  onClick={() =>  setQuestionModal({isOpen:true})} >
             <IonIcon slot="icon-only" icon ={help}>
             </IonIcon>
           </IonButton>
@@ -96,18 +83,14 @@ const App: React.FC = () => (
     </IonHeader>
 {/* // Create a popup message with the help  icon so we only have checkout on the bottom. */}
     <IonContent>
-      <IonFab horizontal="end" vertical= "bottom" slot= "fixed">
-        <IonFabButton size="small">
-          <IonIcon icon={help} />
-        </IonFabButton>
-      </IonFab>
+      <QuestionModal isOpen={questionModal.isOpen} 
+      onClose={() => setQuestionModal({isOpen:false})}/>
       <IonButtons slot= "primary">
         <IonButton>
           <IonIcon slot= "icon-only" name = "close">
           </IonIcon>
         </IonButton>
       </IonButtons>
-
      
         <IonReactRouter>
         <IonTabs>
@@ -135,7 +118,34 @@ const App: React.FC = () => (
       </IonReactRouter>
       </IonContent>
   </IonApp>
-);
+   );
+  };
 export default App;
+
+const QuestionModal:React.FC<any> = ({isOpen, onClose}) => {
+
+  return <IonModal isOpen={isOpen}>
+        <IonHeader>
+          <IonToolbar>
+            <IonTitle>
+              Welcome to the Open Pantry
+            </IonTitle>
+            <IonButton slot ="end" onClick={onClose} >
+              <IonIcon slot= "icon-only" icon ={close}>
+              </IonIcon>
+            </IonButton>
+          </IonToolbar>
+        </IonHeader>
+        <IonContent className ="ion-padding">
+          <IonText color= "secondary">
+            <h3>
+              Welcome to the Mac Open Pantry! This is a textbox for more
+              info about the Open Pantry and things like that. Can't find an item? Request 
+              an item or make suggestions <IonRouterLink color= "primary" href="https://forms.gle/yjcNm1owrxcMzsxx7" target="_blank">here!</IonRouterLink>
+            </h3>
+          </IonText>
+        </IonContent>
+      </IonModal>
+}
 
 

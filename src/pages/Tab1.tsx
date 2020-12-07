@@ -21,19 +21,6 @@ const inventory= data.map((x) => {return (x.name)} );
 console.log(inventory);
 
 
-
-
-// db.collection("Pasta").doc("Spaghetti").set({
-//     name: "Barillo"
-// })
-// .then(function() {
-//     console.log("Document successfully written?!");
-// })
-// .catch(function(error) {
-//     console.error("Error writing: ", error);
-// });
-
-
 //declare function require(path: string):any;
 //function changeInventory(food: string, weight: number){
 //    var subVal = "";
@@ -66,10 +53,8 @@ function getContent() {
   return document.querySelector('ion-content');
 }
 
-
 const Tab1: React.FC = () => {
   const [myModal, setMyModal] = useState({ isOpen: false });
-
 
   return (
     <IonApp>
@@ -91,7 +76,6 @@ const Tab1: React.FC = () => {
         <IonLabel>
           <div className = "padding"> 
             <IonButton href="https://forms.gle/qGqbk51g29aHukW27" target="_blank">Looking For An Item?</IonButton>
-            <IonButton href= "https://forms.gle/yjcNm1owrxcMzsxx7" target= "_blank"> Check Out</IonButton>
           </div>
         </IonLabel>
         </IonItem>
@@ -102,7 +86,7 @@ const Tab1: React.FC = () => {
       
       <IonFooter>
         <IonToolbar>
-          <IonButton id="testingButton" slot="end" onClick={() =>  setMyModal({isOpen:true})}>Checkout
+          <IonButton id="myBag" slot="end" onClick={() =>  setMyModal({isOpen:true})}>Checkout
           </IonButton>
         </IonToolbar>
       </IonFooter>
