@@ -5,7 +5,8 @@ import './Tab2.css';
 import ExploreContainer from '../components/ExploreContainer';
 import { db } from '../components/Firebase/firebase2.js';
 import { stringify } from 'querystring';
-import NumberListRecover from '../components/NumListRecover';
+import NumberList from '../components/NumListRecover';
+import { promises } from 'dns';
 // export const AlertExample: React.FC = () => {
 //   const [showAlert1, setShowAlert1] = useState(false);
 
@@ -16,33 +17,46 @@ const collectionNames: Array<string> = ["Beans and Protein",
 "Flour, Oil, Spices", "Oatmeal and Cereal", "Personal Care",
 "Produce", "Rice and Pasta", "Sauces", "Snacks","Soups and Broth"];
 
+
 //https://firebase.google.com/docs/firestore/query-data/get-data
 //used firebase documentation as a guide for below function
-function returnAllDocs(collection:string): Array<string> {
+async function returnAllDocs(collection:string): Promise<string[]>
+{
   //let test: Array<string>=["",""]; 
   var returnArray:string[] = new Array(11);
   let i: number = 0;
-  db.collection(collection).get().then(function(querySnapshot) {
+  return db.collection(collection).get().then(function(querySnapshot) {
     querySnapshot.forEach(function(doc) {
         returnArray[i]= doc.id;
         i++;
-        
     });
-    console.log(returnArray);
+    //console.log(returnArray);
+    return returnArray;
   });
-  console.log(returnArray);   
-  return returnArray;
+  //console.log(returnArray);   
+  //return returnArray;
   
 }
 
 // function getDocData(col:string): <string>() {}
   
 //for each 
-  
+let emptyList:string[];
 let arrayOfDocs = returnAllDocs("Category Names");
+let categoryLists: string[];
+
+arrayOfDocs.then((docs: string[])=>{
+  categoryLists = docs;
+  docs.map(doc=>{let docArray = returnAllDocs(doc);
+    docArray.then((subCat: string[])=>{
+      console.log(subCat);
+    });
+});
+
+});
 
 
-//let docArray = returnAllDocs(arrayOfDocs[0]);
+//let docArray = returnAllDocs(arrayOfDocs[2]);
 //console.log(arrayOfDocs[0]);
 
 
@@ -57,7 +71,7 @@ export const Tab2: React.FC = () => {
         <IonContent fullscreen>
         {/* <IonButton slot= "end" color= "danger" ></IonButton>  */}
           <p className="ion-padding-start ion-padding-end"> </p>
-          <NumberListRecover itemName={arrayOfDocs} ></NumberListRecover>
+          <NumberList itemName={emptyList} ></NumberList>
           <p className="ion-padding-start ion-padding-end"></p>
         
         </IonContent>
