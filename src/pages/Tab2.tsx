@@ -5,7 +5,8 @@ import './Tab2.css';
 import ExploreContainer from '../components/ExploreContainer';
 import { db } from '../components/Firebase/firebase2.js';
 import { stringify } from 'querystring';
-import NumberList from '../components/NumberList';
+import NumberList from '../components/NumListRecover';
+import { promises } from 'dns';
 // export const AlertExample: React.FC = () => {
 //   const [showAlert1, setShowAlert1] = useState(false);
 
@@ -16,37 +17,69 @@ const collectionNames: Array<string> = ["Beans and Protein",
 "Flour, Oil, Spices", "Oatmeal and Cereal", "Personal Care",
 "Produce", "Rice and Pasta", "Sauces", "Snacks","Soups and Broth"];
 
+
 //https://firebase.google.com/docs/firestore/query-data/get-data
 //used firebase documentation as a guide for below function
-function returnAllDocs(collection:string): Array<string> {
+async function returnAllDocs(collection:string): Promise<string[]>
+{
   //let test: Array<string>=["",""]; 
   var returnArray:string[] = new Array(11);
   let i: number = 0;
-  db.collection(collection).get().then(function(querySnapshot) {
+  return db.collection(collection).get().then(function(querySnapshot) {
     querySnapshot.forEach(function(doc) {
         returnArray[i]= doc.id;
         i++;
-        
     });
-    console.log(returnArray);
+    //console.log(returnArray);
+    return returnArray;
   });
-  console.log(returnArray);   
-  return returnArray;
+  //console.log(returnArray);   
+  //return returnArray;
   
 }
 
 // function getDocData(col:string): <string>() {}
   
 //for each 
-  
-let arrayOfDocs = returnAllDocs("Category Names");
+// let emptyList:string[];
+// let arrayOfDocs = returnAllDocs("Category Names");
+// let categoryLists: string[];
+
+// arrayOfDocs.then((docs: string[])=>{
+//   categoryLists = docs;
+//   docs.map(doc=>{let docArray = returnAllDocs(doc);
+//     docArray.then((subCat: string[])=>{
+//       console.log(subCat);
+//     });
+// });
+
+// });
 
 
-//let docArray = returnAllDocs(arrayOfDocs[0]);
+//let docArray = returnAllDocs(arrayOfDocs[2]);
 //console.log(arrayOfDocs[0]);
 
 
 export const Tab2: React.FC = () => {
+  const [catList, setCatList] = useState<string[]>([]);
+  const [docList, setDocList] = useState<string[]>([]);
+  
+  let arrayOfDocs = returnAllDocs("Category Names");
+  let categoryLists: string[];
+
+  arrayOfDocs.then((docs: string[])=>{
+    categoryLists = docs;
+    setCatList(categoryLists);
+    let useDocsList = returnAllDocs(categoryLists[0]);
+    let docList2: string[];
+  
+    useDocsList.then((docs: string[])=>{
+      docList2 = docs;
+      setDocList(docList2);
+      //console.log(docList);
+    });
+  });
+
   return (
       <IonPage>
         <IonHeader>
@@ -56,8 +89,13 @@ export const Tab2: React.FC = () => {
         </IonHeader>
         <IonContent fullscreen>
         {/* <IonButton slot= "end" color= "danger" ></IonButton>  */}
+<<<<<<< HEAD
           {/* <p className="ion-padding-start ion-padding-end"> </p>
           <NumberList CategoryName={arrayOfDocs} ></NumberList>
+=======
+          <p className="ion-padding-start ion-padding-end"> </p>
+          <NumberList itemName={catList} ></NumberList>
+>>>>>>> numListWork
           <p className="ion-padding-start ion-padding-end"></p>
          */}
         </IonContent>
@@ -65,4 +103,3 @@ export const Tab2: React.FC = () => {
     );
   };
 export default Tab2;
-
