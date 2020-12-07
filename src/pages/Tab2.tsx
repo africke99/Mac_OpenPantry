@@ -56,10 +56,10 @@ export const Tab2: React.FC = () => {
         </IonHeader>
         <IonContent fullscreen>
         {/* <IonButton slot= "end" color= "danger" ></IonButton>  */}
-          <p className="ion-padding-start ion-padding-end"> </p>
-          <NumberList itemName={arrayOfDocs} ></NumberList>
+          {/* <p className="ion-padding-start ion-padding-end"> </p>
+          <NumberList CategoryName={arrayOfDocs} ></NumberList>
           <p className="ion-padding-start ion-padding-end"></p>
-        
+         */}
         </IonContent>
       </IonPage>
     );
