@@ -41,19 +41,19 @@ async function returnAllDocs(collection:string): Promise<string[]>
 // function getDocData(col:string): <string>() {}
   
 //for each 
-let emptyList:string[];
-let arrayOfDocs = returnAllDocs("Category Names");
-let categoryLists: string[];
+// let emptyList:string[];
+// let arrayOfDocs = returnAllDocs("Category Names");
+// let categoryLists: string[];
 
-arrayOfDocs.then((docs: string[])=>{
-  categoryLists = docs;
-  docs.map(doc=>{let docArray = returnAllDocs(doc);
-    docArray.then((subCat: string[])=>{
-      console.log(subCat);
-    });
-});
+// arrayOfDocs.then((docs: string[])=>{
+//   categoryLists = docs;
+//   docs.map(doc=>{let docArray = returnAllDocs(doc);
+//     docArray.then((subCat: string[])=>{
+//       console.log(subCat);
+//     });
+// });
 
-});
+// });
 
 
 //let docArray = returnAllDocs(arrayOfDocs[2]);
@@ -61,6 +61,25 @@ arrayOfDocs.then((docs: string[])=>{
 
 
 export const Tab2: React.FC = () => {
+  const [catList, setCatList] = useState<string[]>([]);
+  const [docList, setDocList] = useState<string[]>([]);
+  
+  let arrayOfDocs = returnAllDocs("Category Names");
+  let categoryLists: string[];
+
+  arrayOfDocs.then((docs: string[])=>{
+    categoryLists = docs;
+    setCatList(categoryLists);
+    let useDocsList = returnAllDocs(categoryLists[0]);
+    let docList2: string[];
+  
+    useDocsList.then((docs: string[])=>{
+      docList2 = docs;
+      setDocList(docList2);
+      //console.log(docList);
+    });
+  });
+
   return (
       <IonPage>
         <IonHeader>
@@ -71,7 +90,7 @@ export const Tab2: React.FC = () => {
         <IonContent fullscreen>
         {/* <IonButton slot= "end" color= "danger" ></IonButton>  */}
           <p className="ion-padding-start ion-padding-end"> </p>
-          <NumberList itemName={emptyList} ></NumberList>
+          <NumberList itemName={catList} ></NumberList>
           <p className="ion-padding-start ion-padding-end"></p>
         
         </IonContent>
@@ -79,4 +98,3 @@ export const Tab2: React.FC = () => {
     );
   };
 export default Tab2;
-

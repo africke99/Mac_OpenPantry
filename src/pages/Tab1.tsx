@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { IonContent, IonHeader, IonItem, IonLabel, IonNote, IonPage, IonTitle, IonToolbar, IonList, IonButton } from '@ionic/react';
 import ExploreContainer from '../components/ExploreContainer';
 import './Tab1.css';
-import NumberListRecover from '../components/NumListRecover';
+import NumberList from '../components/NumListRecover';
 import data from './inventory.json';
 import { db } from '../components/Firebase/firebase2.js';
 
@@ -76,11 +76,7 @@ const Tab1: React.FC = () => {
       
       {/* <IonButton slot= "end" color= "danger" ></IonButton>  */}
         <p className="ion-padding-start ion-padding-end"> </p>
-<<<<<<< HEAD
-        <NumberListRecover itemName={data.map((x) => {return (x.name)} )} ></NumberListRecover>
-=======
-        <NumberList item={inventory} ></NumberList>
->>>>>>> 3f0d0b622c1b6c18ac6faab91394372104a8654c
+        <NumberList itemName={inventory} ></NumberList>
         <p className="ion-padding-start ion-padding-end"></p>
       </IonContent>
     </IonPage>
