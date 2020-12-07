@@ -15,7 +15,10 @@ import {
   IonTitle,
   IonToolbar, 
   IonFab,
-  IonFabButton
+  IonFabButton,
+  IonContent,
+  IonButton,
+  IonModal
 } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import { help, basketOutline, basketSharp, ellipse, fastFoodOutline, fileTrayFullOutline, square, triangle } from 'ionicons/icons';
@@ -58,19 +61,53 @@ import '../theme/variables.css';
 //     }
 //   }
 
+function presentMessage() {
+  // creates the modal w modal page component
+  const modalElement = document.createElement('ion-modal');
+  modalElement.component = 'modal-page';
+  modalElement.cssClass = 'my-custom-class';
+
+  // present the modal
+  document.body.appendChild(modalElement);
+  return modalElement.present();
+
+}
+
+// async function dismissModal() {
+//   await modal.dismiss({
+//   'dismissed': true
+//   });
+  
+//   }
+
+
 const App: React.FC = () => (
   <IonApp>
-
-        <IonToolbar>
-          <IonTitle>Macalester Pantry</IonTitle>
-        </IonToolbar>
-
+    <IonHeader>
+      <IonToolbar>
+        <IonTitle>Macalester Pantry</IonTitle>
+        <IonButtons slot="end">
+          <IonButton color="tertiary">
+            <IonIcon slot="icon-only" icon ={help}>
+            </IonIcon>
+          </IonButton>
+        </IonButtons>
+      </IonToolbar>
+    </IonHeader>
 {/* // Create a popup message with the help  icon so we only have checkout on the bottom. */}
-        <IonFab horizontal="end" vertical= "center" slot= "fixed" edge>
-          <IonFabButton> 
-            <IonIcon icon={help} />
-          </IonFabButton>
-        </IonFab>
+    <IonContent>
+      <IonFab horizontal="end" vertical= "bottom" slot= "fixed">
+        <IonFabButton size="small">
+          <IonIcon icon={help} />
+        </IonFabButton>
+      </IonFab>
+      <IonButtons slot= "primary">
+        <IonButton>
+          <IonIcon slot= "icon-only" name = "close">
+          </IonIcon>
+        </IonButton>
+      </IonButtons>
+
      
         <IonReactRouter>
         <IonTabs>
@@ -96,7 +133,7 @@ const App: React.FC = () => (
           </IonTabBar>
         </IonTabs>
       </IonReactRouter>
-       
+      </IonContent>
   </IonApp>
 );
 export default App;

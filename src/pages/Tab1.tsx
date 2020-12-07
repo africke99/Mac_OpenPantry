@@ -1,11 +1,13 @@
 
 import React, { useState } from 'react';
-import { IonContent, IonHeader, IonItem, IonLabel, IonNote, IonPage, IonTitle, IonToolbar, IonList, IonButton, IonFab, IonIcon, IonFabButton } from '@ionic/react';
+import { IonContent, IonModal, IonFooter, IonHeader, IonItem, IonLabel, IonNote, IonPage, IonTitle, IonToolbar, IonList, IonButton, IonFab, IonIcon, IonFabButton, IonApp } from '@ionic/react';
 import ExploreContainer from '../components/ExploreContainer';
 import './Tab1.css';
 import NumberList from '../components/NumberList';
 import data from './inventory.json';
 import { db } from '../components/Firebase/firebase2.js';
+import {close, help, basketOutline, basketSharp, ellipse, fastFoodOutline, fileTrayFullOutline, square, triangle } from 'ionicons/icons';
+import { Component } from 'ionicons/dist/types/stencil-public-runtime';
 
 
 
@@ -17,6 +19,7 @@ import { db } from '../components/Firebase/firebase2.js';
 //https://sebhastian.com/react-firestore/ TESTING WITH THIS TUTORIAL
 const inventory= data.map((x) => {return (x.name)} );
 console.log(inventory);
+
 
 
 
@@ -63,16 +66,25 @@ function getContent() {
   return document.querySelector('ion-content');
 }
 
+
 const Tab1: React.FC = () => {
+  const [myModal, setMyModal] = useState({ isOpen: false });
+
 
   return (
-    <IonPage>
+    <IonApp>
+      <IonPage>
+        <IonContent fullscreen>
+         <IonToolbar>
+           <IonTitle>Pantry Inventory</IonTitle>
+       
+          </IonToolbar>
       
-      <IonContent fullscreen>
-          
-        <IonToolbar>
-          <IonTitle>Pantry Inventory</IonTitle>
-        </IonToolbar>
+      <IonButton slot= "end" color= "danger" ></IonButton>
+        <p className="ion-padding-start ion-padding-end"> </p>
+        <NumberList itemName={inventory} ></NumberList>
+        <p className="ion-padding-start ion-padding-end"></p>
+
 
         <IonList>
         <IonItem text-center>
@@ -84,14 +96,52 @@ const Tab1: React.FC = () => {
         </IonLabel>
         </IonItem>
       </IonList>
+
+      <MyModal isOpen={myModal.isOpen} 
+      onClose={() => setMyModal({isOpen:false})}/>
       
-      <IonButton slot= "end" color= "danger" ></IonButton>
-        <p className="ion-padding-start ion-padding-end"> </p>
-        <NumberList itemName={inventory} ></NumberList>
-        <p className="ion-padding-start ion-padding-end"></p>
+      <IonFooter>
+        <IonToolbar>
+          <IonButton id="testingButton" slot="end" onClick={() =>  setMyModal({isOpen:true})}>Checkout
+          </IonButton>
+        </IonToolbar>
+      </IonFooter>
+      
       </IonContent>
+
     </IonPage>
+  </IonApp>
   );
 };
 export default Tab1;
+
+// REFACTORING Modal
+const MyModal:React.FC<any> = ({isOpen, onClose}) => {
+
+  return <IonModal isOpen={isOpen}>
+        <IonHeader>
+          <IonToolbar>
+            <IonTitle>
+              My Bag
+            </IonTitle>
+            <IonButton slot ="end" onClick={onClose} >
+              <IonIcon slot= "icon-only" icon ={close}>
+              </IonIcon>
+            </IonButton>
+          </IonToolbar>
+        </IonHeader>
+        <IonContent className ="ion-padding">
+        <IonItem>
+          <IonLabel>
+              Item 
+            </IonLabel>
+        </IonItem>
+        </IonContent>
+
+        <IonButton onClick={onClose} href= "https://forms.gle/yjcNm1owrxcMzsxx7" target= "_blank"> Confirm
+        </IonButton>
+      </IonModal>
+}
+
+
 
