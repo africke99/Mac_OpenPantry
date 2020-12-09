@@ -1,16 +1,8 @@
-[
+    [
     {
-        "category": "canned",
-        "name": "chickpeas",
-        "weight": "2 lbs"
-
-    },
-    {
-        "category": "produce",
-        "name": "apples",
-        "weight": "5 lbs"
-    },
-    {   "category": "produce",
-        "name": "oranges",
-        "weight": "10 lbs"}
+        "collection": "canned",
+        "doc": "chickpeas",
+        "quantity": 3,
+        "weight": 4
+    }
 ]
