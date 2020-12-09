@@ -30,7 +30,7 @@ async function returnAllDocs(collection:string): Promise<string[]>
 
     type Item = {
         itemName: Array<string>;
-        subItems?: Array<string>;
+        subItems?: {[category: string]: string[] | undefined;};
     }
 
  
@@ -41,25 +41,26 @@ async function returnAllDocs(collection:string): Promise<string[]>
         //const [showAlert1, setShowAlert1] = useState(false);
 
         const { itemName,subItems } = item;
-        console.log(subItems);
+        console.log(itemName);
+
         return(
             <IonList>
-                {itemName.map((i) => {
+                {itemName && itemName.map((i) => {
                 return (
                 <IonList>
                     <IonListHeader>
                         <IonLabel>
                             {i}
-                        </IonLabel>
-                        
+                        </IonLabel>                        
                     </IonListHeader>
-                {subItems && subItems.map((element) => {
-                    return (<IonItem>
-                        <IonLabel>
-                            {element}
-                        </IonLabel>
-                    </IonItem>)
-                }) }
+                    {subItems[i] && subItems[i].map( element => {
+                        return (
+                        <IonItem>
+                            <IonLabel>
+                                {element}
+                            </IonLabel>
+                        </IonItem>)
+                    })}
                  
 
                 {/* <IonItem key={i}>

@@ -67,7 +67,7 @@ function changeInventory(food: string){
 const Tab1: React.FC = () => {
   const [myModal, setMyModal] = useState({ isOpen: false });
   const [catList, setCatList] = useState<string[]>([]);
-  const [docList, setDocList] = useState<string[]>([]);
+  const [docMap, setDocMap] = useState<{[category: string]: string[];}>({});
   
   let arrayOfDocs = returnAllDocs("Category Names");
   let categoryLists: string[];
@@ -76,14 +76,17 @@ const Tab1: React.FC = () => {
     categoryLists = docs;
     setCatList(categoryLists);
 
-  
-    let useDocsList = returnAllDocs(categoryLists[0]);
-    let itemList: string[];
-  
-    useDocsList.then((docs: string[])=>{
-      itemList = docs;
-      setDocList(itemList);
-    });
+    categoryLists.forEach(c => {
+      let useDocsList = returnAllDocs(c);
+      
+      useDocsList.then((docs: string[])=>{
+        let itemList: string[];
+        itemList = docs;
+        docMap[c] = itemList;
+        setDocMap(docMap);
+      });
+    })
+    
   });
   // const[add]
 
@@ -98,7 +101,7 @@ const Tab1: React.FC = () => {
       
       <IonButton slot= "end" color= "danger" ></IonButton>
         <p className="ion-padding-start ion-padding-end"> </p>
-          <NumberList itemName={catList} subItems={docList}  ></NumberList>
+          <NumberList itemName={catList} subItems={docMap}  ></NumberList>
           <p className="ion-padding-start ion-padding-end"></p>
 
         {/* <p className="ion-padding-start ion-padding-end"> </p>
