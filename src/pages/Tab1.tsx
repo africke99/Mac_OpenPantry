@@ -53,8 +53,15 @@ function getContent() {
   return document.querySelector('ion-content');
 }
 
+// function addItemtoInvent(b: boolean) {
+//   return true;
+// }
+
+// const addItemtoInvent = () => 'hi'
+
 const Tab1: React.FC = () => {
   const [myModal, setMyModal] = useState({ isOpen: false });
+  // const[add]
 
   return (
     <IonApp>
