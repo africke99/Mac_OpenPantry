@@ -63,6 +63,10 @@ function changeInventory(food: string){
 //   // if (! err) ===> return true;
 // }
 
+//cookie
+//local storage API
+
+
 
 const Tab1: React.FC = () => {
   const [myModal, setMyModal] = useState({ isOpen: false });
