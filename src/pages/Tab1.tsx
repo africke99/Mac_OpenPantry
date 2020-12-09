@@ -9,28 +9,13 @@ import { db } from '../components/Firebase/firebase2.js';
 import {close, help, basketOutline, basketSharp, ellipse, fastFoodOutline, fileTrayFullOutline, square, triangle } from 'ionicons/icons';
 import { Component } from 'ionicons/dist/types/stencil-public-runtime';
 
-//import fs = require("fs");
-
-//import { readFileSync } from "fs";
-//import { writeFile } from "fs";
 
 //https://sebhastian.com/react-firestore/ TESTING WITH THIS TUTORIAL
-const inventory= data.map((x) => {return (x.name)} );
+const inventory= data.map((x) => {return (x.collection)} );
 console.log(inventory);
 
 
-//declare function require(path: string):any;
-//function changeInventory(food: string, weight: number){
-//    var subVal = "";
-//    for (var spec in inventory.canned){
-//        if(spec==food){
-//            let spec = Object.create({'name':})
-//        }
-//    }
-//}
 
-//var invenContent = readFileSync('inventory.json');
-//var words = JSON.parse(invenContent);
 
 function changeInventory(food: string){
 
@@ -39,17 +24,7 @@ function changeInventory(food: string){
     //fs.writeFile('inventory.json',data);
 }
 
-function  generateNumList(number: number) {
-}
 
-  // function generateList(number: number) {
-    
-  //   numList.map(i => {return (<IonItem> <IonLabel>Item ${i} </IonLabel> </IonItem>)});
-  // }
-  
-function getContent() {
-  return document.querySelector('ion-content');
-}
 
 // //takes in the doc, finds it's collection, 
 // //adds the data to the 'bag' json
@@ -87,38 +62,25 @@ const Tab1: React.FC = () => {
         <p className="ion-padding-start ion-padding-end"> </p>
         <NumberList itemName={inventory} ></NumberList>
         <p className="ion-padding-start ion-padding-end"></p>
-
-
-        <IonList>
-        <IonItem text-center>
-        <IonLabel>
-          <div className = "padding"> 
-            <IonButton href="https://forms.gle/qGqbk51g29aHukW27" target="_blank">Looking For An Item?</IonButton>
-          </div>
-        </IonLabel>
-        </IonItem>
-      </IonList>
-
-      <MyModal isOpen={myModal.isOpen} 
-      onClose={() => setMyModal({isOpen:false})}/>
-      
-      <IonFooter>
-        <IonToolbar>
-          <IonButton id="myBag" slot="end" onClick={() =>  setMyModal({isOpen:true})}>Checkout
-          </IonButton>
-        </IonToolbar>
-      </IonFooter>
       
       {/* <IonButton slot= "end" color= "danger" ></IonButton>  */}
         <p className="ion-padding-start ion-padding-end"> </p>
         <NumberList itemName={inventory} ></NumberList>
         <p className="ion-padding-start ion-padding-end"></p>
       </IonContent>
-
+      <MyModal isOpen={myModal.isOpen} 
+      onClose={() => setMyModal({isOpen:false})}/>
+      <IonFooter>
+        <IonToolbar>
+          <IonButton id="myBag" slot="end" onClick={() =>  setMyModal({isOpen:true})}>Checkout
+          </IonButton>
+        </IonToolbar>
+      </IonFooter>
     </IonPage>
   </IonApp>
   );
 };
+
 export default Tab1;
 
 // REFACTORING Modal
