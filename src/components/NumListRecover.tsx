@@ -9,23 +9,39 @@ import {
 
     } from '@ionic/react';
 
-    
+import Tab2 from '../pages/Tab2';
+import { nodeModuleNameResolver } from 'typescript';
+
+async function returnAllDocs(collection:string): Promise<string[]>
+{
+  //let test: Array<string>=["",""]; 
+  var returnArray:string[] = new Array(11);
+  let i: number = 0;
+  return db.collection(collection).get().then(function(querySnapshot) {
+    querySnapshot.forEach(function(doc) {
+        returnArray[i]= doc.id;
+        i++;
+    });
+    return returnArray;
+  });
+ 
+}
     
 
     type Item = {
         itemName: Array<string>;
+        subItems?: Array<string>;
     }
 
-    // function iterateList(list:Array<string>){
-    //     for
-    // }
+ 
 
+   
 
+    const NumberList: React.FC<Item> = (item) => {
+        //const [showAlert1, setShowAlert1] = useState(false);
 
-    const NumberList: React.FC<Item> = ( item ) => {
-        const [showAlert1, setShowAlert1] = useState(false);
-        const { itemName } = item;
-        
+        const { itemName,subItems } = item;
+        console.log(subItems);
         return(
             <IonList>
                 {itemName.map((i) => {
@@ -35,8 +51,18 @@ import {
                         <IonLabel>
                             {i}
                         </IonLabel>
+                        
                     </IonListHeader>
-                <IonItem key={i}>
+                {subItems && subItems.map((element) => {
+                    return (<IonItem>
+                        <IonLabel>
+                            {element}
+                        </IonLabel>
+                    </IonItem>)
+                }) }
+                 
+
+                {/* <IonItem key={i}>
                 <p> header description </p>
                 <IonButton slot= "end" color= "danger" onClick={() => setShowAlert1(true)} expand="block">Add Item </IonButton> 
                 <IonAlert
@@ -62,7 +88,7 @@ import {
                         ]}
                     />
                   
-                </IonItem>
+                </IonItem> */}
                 </IonList>
                 )})}
                 

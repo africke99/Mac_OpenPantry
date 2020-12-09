@@ -30,34 +30,11 @@ async function returnAllDocs(collection:string): Promise<string[]>
         returnArray[i]= doc.id;
         i++;
     });
-    //console.log(returnArray);
     return returnArray;
   });
-  //console.log(returnArray);   
-  //return returnArray;
-  
+ 
 }
 
-// function getDocData(col:string): <string>() {}
-  
-//for each 
-// let emptyList:string[];
-// let arrayOfDocs = returnAllDocs("Category Names");
-// let categoryLists: string[];
-
-// arrayOfDocs.then((docs: string[])=>{
-//   categoryLists = docs;
-//   docs.map(doc=>{let docArray = returnAllDocs(doc);
-//     docArray.then((subCat: string[])=>{
-//       console.log(subCat);
-//     });
-// });
-
-// });
-
-
-//let docArray = returnAllDocs(arrayOfDocs[2]);
-//console.log(arrayOfDocs[0]);
 
 
 export const Tab2: React.FC = () => {
@@ -70,13 +47,14 @@ export const Tab2: React.FC = () => {
   arrayOfDocs.then((docs: string[])=>{
     categoryLists = docs;
     setCatList(categoryLists);
+
+  
     let useDocsList = returnAllDocs(categoryLists[0]);
-    let docList2: string[];
+    let itemList: string[];
   
     useDocsList.then((docs: string[])=>{
-      docList2 = docs;
-      setDocList(docList2);
-      //console.log(docList);
+      itemList = docs;
+      setDocList(itemList);
     });
   });
 
@@ -88,11 +66,10 @@ export const Tab2: React.FC = () => {
           </IonToolbar>
         </IonHeader>
         <IonContent fullscreen>
-        {/* <IonButton slot= "end" color= "danger" ></IonButton> 
+         <IonButton slot= "end" color= "danger" ></IonButton> 
           <p className="ion-padding-start ion-padding-end"> </p>
-          <NumberList itemName={catList} ></NumberList>
+          <NumberList itemName={catList} subItems={docList}  ></NumberList>
           <p className="ion-padding-start ion-padding-end"></p>
-         */}
         </IonContent>
       </IonPage>
     );
