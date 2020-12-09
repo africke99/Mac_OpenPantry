@@ -9,8 +9,6 @@ import { db } from '../components/Firebase/firebase2.js';
 import {close, help, basketOutline, basketSharp, ellipse, fastFoodOutline, fileTrayFullOutline, square, triangle } from 'ionicons/icons';
 import { Component } from 'ionicons/dist/types/stencil-public-runtime';
 
-
-
 //import fs = require("fs");
 
 //import { readFileSync } from "fs";
@@ -53,8 +51,28 @@ function getContent() {
   return document.querySelector('ion-content');
 }
 
+// //takes in the doc, finds it's collection, 
+// //adds the data to the 'bag' json
+// //returns true when it is successful
+// function addItemtoInvent(doc:string) {
+//     var fs = require("fs");
+//     var getID = db.collection(doc);
+//     var getCol = getID.get();
+//     var itemToAdd = {};
+//     itemToAdd = {getCol, doc, "1"}
+
+//     fs.writeFile('inventory.json', JSON.stringify(itemToAdd), (err) => {
+//       if (err) {
+//         return false;
+//       }}
+      
+//   // if (! err) ===> return true;
+// }
+
+
 const Tab1: React.FC = () => {
   const [myModal, setMyModal] = useState({ isOpen: false });
+  // const[add]
 
   return (
     <IonApp>
