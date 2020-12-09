@@ -8,13 +8,34 @@ import data from './inventory.json';
 import { db } from '../components/Firebase/firebase2.js';
 import {close, help, basketOutline, basketSharp, ellipse, fastFoodOutline, fileTrayFullOutline, square, triangle } from 'ionicons/icons';
 import { Component } from 'ionicons/dist/types/stencil-public-runtime';
+import { stringify } from 'querystring';
+import { promises } from 'dns';
 
+const collectionNames: Array<string> = ["Beans and Protein",
+"Beverages", "Bread and Tortillas", "Canned Fruits and Vegetables",
+"Flour, Oil, Spices", "Oatmeal and Cereal", "Personal Care",
+"Produce", "Rice and Pasta", "Sauces", "Snacks","Soups and Broth"];
+
+//https://firebase.google.com/docs/firestore/query-data/get-data
+//used firebase documentation as a guide for below function
+async function returnAllDocs(collection:string): Promise<string[]>
+{
+  //let test: Array<string>=["",""]; 
+  var returnArray:string[] = new Array(11);
+  let i: number = 0;
+  return db.collection(collection).get().then(function(querySnapshot) {
+    querySnapshot.forEach(function(doc) {
+        returnArray[i]= doc.id;
+        i++;
+    });
+    return returnArray;
+  });
+ 
+}
 
 //https://sebhastian.com/react-firestore/ TESTING WITH THIS TUTORIAL
 const inventory= data.map((x) => {return (x.collection)} );
 console.log(inventory);
-
-
 
 
 function changeInventory(food: string){
@@ -23,8 +44,6 @@ function changeInventory(food: string){
     //var data = JSON.stringify(words);
     //fs.writeFile('inventory.json',data);
 }
-
-
 
 // //takes in the doc, finds it's collection, 
 // //adds the data to the 'bag' json
@@ -47,6 +66,25 @@ function changeInventory(food: string){
 
 const Tab1: React.FC = () => {
   const [myModal, setMyModal] = useState({ isOpen: false });
+  const [catList, setCatList] = useState<string[]>([]);
+  const [docList, setDocList] = useState<string[]>([]);
+  
+  let arrayOfDocs = returnAllDocs("Category Names");
+  let categoryLists: string[];
+
+  arrayOfDocs.then((docs: string[])=>{
+    categoryLists = docs;
+    setCatList(categoryLists);
+
+  
+    let useDocsList = returnAllDocs(categoryLists[0]);
+    let itemList: string[];
+  
+    useDocsList.then((docs: string[])=>{
+      itemList = docs;
+      setDocList(itemList);
+    });
+  });
   // const[add]
 
   return (
@@ -60,13 +98,17 @@ const Tab1: React.FC = () => {
       
       <IonButton slot= "end" color= "danger" ></IonButton>
         <p className="ion-padding-start ion-padding-end"> </p>
+          <NumberList itemName={catList} subItems={docList}  ></NumberList>
+          <p className="ion-padding-start ion-padding-end"></p>
+
+        {/* <p className="ion-padding-start ion-padding-end"> </p>
         <NumberList itemName={inventory} ></NumberList>
-        <p className="ion-padding-start ion-padding-end"></p>
+        <p className="ion-padding-start ion-padding-end"></p> */}
       
       {/* <IonButton slot= "end" color= "danger" ></IonButton>  */}
-        <p className="ion-padding-start ion-padding-end"> </p>
+        {/* <p className="ion-padding-start ion-padding-end"> </p>
         <NumberList itemName={inventory} ></NumberList>
-        <p className="ion-padding-start ion-padding-end"></p>
+        <p className="ion-padding-start ion-padding-end"></p> */}
       </IonContent>
       <MyModal isOpen={myModal.isOpen} 
       onClose={() => setMyModal({isOpen:false})}/>

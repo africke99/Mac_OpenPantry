@@ -9,7 +9,7 @@ import {
 
     } from '@ionic/react';
 
-import Tab2 from '../pages/Tab2';
+import Tab1 from '../pages/Tab1';
 import { nodeModuleNameResolver } from 'typescript';
 
 async function returnAllDocs(collection:string): Promise<string[]>

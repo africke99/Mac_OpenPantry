@@ -2,32 +2,25 @@ import React, { useState } from 'react';
 import { Redirect, Route } from 'react-router-dom';
 import {
   IonApp,
-  IonBackButton,
   IonButtons,
   IonHeader,
   IonIcon,
   IonLabel,
   IonRouterOutlet,
-  IonRow,
   IonTabBar,
   IonTabButton,
   IonTabs,
   IonTitle,
   IonToolbar, 
-  IonFab,
-  IonFabButton,
   IonContent,
   IonButton,
   IonModal,
-  IonItem,
   IonText,
   IonRouterLink
 } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-import { close, help, basketOutline, basketSharp, ellipse, fastFoodOutline, fileTrayFullOutline, square, triangle } from 'ionicons/icons';
+import { close, help, fileTrayFullOutline,} from 'ionicons/icons';
 import Tab1 from '../pages/Tab1';
-import Tab2 from '../pages/Tab2';
-import Tab3 from '../pages/Tab3';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -96,22 +89,12 @@ const App: React.FC = () => {
         <IonTabs>
           <IonRouterOutlet style={{top:'6vh'}}>
             <Route path="/tab1" component={Tab1} exact={true} />
-            <Route path="/tab2" component={Tab2} exact={true} />
-            <Route path="/tab3" component={Tab3} />
             <Route path="/" render={() => <Redirect to="/tab1" />} exact={true} />
           </IonRouterOutlet>
           <IonTabBar slot="bottom">
             <IonTabButton tab="tab1" href="/tab1">
               <IonIcon icon={fileTrayFullOutline} />
               <IonLabel>Inventory</IonLabel>
-            </IonTabButton>
-            <IonTabButton tab="tab2" href="/tab2">
-              <IonIcon icon={ellipse} />
-              <IonLabel>Tab 2</IonLabel>
-            </IonTabButton>
-            <IonTabButton tab="tab3" href="/tab3">
-              <IonIcon icon={basketOutline} />
-              <IonLabel>Basket</IonLabel>
             </IonTabButton>
           </IonTabBar>
         </IonTabs>
@@ -147,5 +130,3 @@ const QuestionModal:React.FC<any> = ({isOpen, onClose}) => {
         </IonContent>
       </IonModal>
 }
-
-
