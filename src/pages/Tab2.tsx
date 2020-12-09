@@ -88,7 +88,7 @@ export const Tab2: React.FC = () => {
           </IonToolbar>
         </IonHeader>
         <IonContent fullscreen>
-        {/* <IonButton slot= "end" color= "danger" ></IonButton>  */}
+        {/* <IonButton slot= "end" color= "danger" ></IonButton> 
           <p className="ion-padding-start ion-padding-end"> </p>
           <NumberList itemName={catList} ></NumberList>
           <p className="ion-padding-start ion-padding-end"></p>
