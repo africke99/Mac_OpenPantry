@@ -123,20 +123,31 @@ const Tab1: React.FC = () => {
     
   });
   // const[add]
+  const [myBag, setmyBag] = useState({});
 
+  const updateBag = (collection:string, name:string) => {
+    //check to see if item is already in
+    if (!(collection in myBag)) {
+      myBag[collection] = {}
+    }
+    if (!(name in myBag[collection])){
+      myBag[collection][name] = 0;
+    }
+    myBag[collection][name]++;
+    setmyBag(myBag);
+  }
   return (
     <IonApp>
       <IonPage>
         <IonContent fullscreen>
          <IonToolbar>
-           <IonTitle> 
-             Pantry Inventory
-             </IonTitle>
+           <IonTitle>Pantry Inventory</IonTitle>     
+
           </IonToolbar>
       
       <IonButton slot= "end" color= "danger" ></IonButton>
         <p className="ion-padding-start ion-padding-end"> </p>
-          <NumberList itemName={catList} subItems={docMap}  ></NumberList>
+          <NumberList itemName={catList} subItems={docMap} updateBag = {updateBag} ></NumberList>
           <p className="ion-padding-start ion-padding-end"></p>
 
         {/* <p className="ion-padding-start ion-padding-end"> </p>
@@ -190,6 +201,4 @@ const MyModal:React.FC<any> = ({isOpen, onClose}) => {
         </IonButton>
       </IonModal>
 }
-
-
 

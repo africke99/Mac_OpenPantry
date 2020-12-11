@@ -12,36 +12,26 @@ import {
 import { nodeModuleNameResolver } from 'typescript';
 import "./NumberList.css";
 
-async function returnAllDocs(collection:string): Promise<string[]>
-{
-  //let test: Array<string>=["",""]; 
-  var returnArray:string[] = new Array(16);
-  let i: number = 0;
-  return db.collection(collection).get().then(function(querySnapshot) {
-    querySnapshot.forEach(function(doc) {
-        returnArray[i]= doc.id;
-        i++;
-    });
-    return returnArray;
-  });
+//look up how to build an artifact, seperate folder (/dist) 
+//put artifact in that folder
+//can put instead /dist
  
-}
-    
 
     type Item = {
         itemName: Array<string>;
         subItems?: {[category: string]: string[] | undefined;};
+        updateBag?: Function;
     }
-
- 
-
-   
+  
 
     const NumberList: React.FC<Item> = (item) => {
         const [showAlert1, setShowAlert1] = useState(false);
 
-        const { itemName,subItems } = item;
+        const { itemName,subItems,updateBag } = item;
         console.log(itemName);
+
+
+        //setShowAlert1(true)
 
         return(
             <IonList>
@@ -60,7 +50,8 @@ async function returnAllDocs(collection:string): Promise<string[]>
                             <IonLabel>
                                 <small> {element} </small>
                             </IonLabel>
-                            <IonButton slot= "end" color= "danger" onClick={() => setShowAlert1(true)} expand="block">Add Item </IonButton> 
+                            <IonButton slot= "end" color= "danger" onClick={() => {updateBag(i, element); setShowAlert1(true);}} expand="block">Add Item </IonButton> 
+                            
                             <IonAlert
                     isOpen={showAlert1}
                     onDidDismiss={() => setShowAlert1(false)}
