@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Redirect, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Redirect, Route } from 'react-router-dom';
 import {
   IonApp,
   IonButtons,
@@ -16,11 +16,13 @@ import {
   IonButton,
   IonModal,
   IonText,
-  IonRouterLink
+  IonRouterLink,
+  IonPage
 } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import { close, help, fileTrayFullOutline,} from 'ionicons/icons';
 import Tab1 from '../pages/Tab1';
+import HomePage from '../pages/HomePage';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -57,12 +59,30 @@ import '../theme/variables.css';
 //     }
 //   }
 
+
 const App: React.FC = () => {
 
   const [questionModal, setQuestionModal] = useState({ isOpen: false });
 
   return(
   <IonApp>
+     <Router>
+      <div className = "App">
+        <IonApp>
+          <IonPage id="main">
+            <IonRouterOutlet>
+              <Route path="/tab1" component={Tab1} exact={true}/>
+              <Route path= "/HomePage" component={HomePage} exact={true}/>
+              <Route
+                path="/"
+                render= {() => <Redirect to="/HomePage" />}
+                exact={true}
+              />
+            </IonRouterOutlet>
+          </IonPage>
+        </IonApp>
+      </div>
+    </Router>
     <IonHeader>
       <IonToolbar>
         <IonTitle>Macalester Pantry</IonTitle>
@@ -74,6 +94,7 @@ const App: React.FC = () => {
         </IonButtons>
       </IonToolbar>
     </IonHeader>
+   
 {/* // Create a popup message with the help  icon so we only have checkout on the bottom. */}
     <IonContent>
       <QuestionModal isOpen={questionModal.isOpen} 
