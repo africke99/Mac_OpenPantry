@@ -112,7 +112,7 @@ const Tab1: React.FC = () => {
 
     categoryLists.forEach(c => {
       let useDocsList = returnAllDocs(c);
-      
+      //console.log(c);
       useDocsList.then((docs: string[])=>{
         let itemList: string[];
         itemList = docs;
