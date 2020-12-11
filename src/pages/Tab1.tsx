@@ -131,6 +131,8 @@ const Tab1: React.FC = () => {
     updateFirestore(myBag);
     setmyBag(myBag);
   }
+
+  //item nodes
   return (
     <IonApp>
       <IonPage>
@@ -154,8 +156,10 @@ const Tab1: React.FC = () => {
         <NumberList itemName={inventory} ></NumberList>
         <p className="ion-padding-start ion-padding-end"></p> */}
       </IonContent>
-      <MyModal isOpen={myModal.isOpen} 
-      onClose={() => setMyModal({isOpen:false})}/>
+      <MyModal
+        myBag={myBag}
+        isOpen={myModal.isOpen} 
+        onClose={() => setMyModal({isOpen:false})}/>
       <IonFooter>
         <IonToolbar>
           <IonButton id="myBag" slot="end" onClick={() =>  setMyModal({isOpen:true})}>Checkout
@@ -169,34 +173,33 @@ const Tab1: React.FC = () => {
 
 export default Tab1;
 
-//make MyModal its own tsx file?
-//can't access myBag when the modal is outside of the main tab1 frame
+// REFACTORING Modal
+const MyModal:React.FC<any> = ({isOpen, onClose, myBag}) => {
 
-// // REFACTORING Modal
-const MyModal:React.FC<any> = ({isOpen, onClose}) => {
-
-  return <IonModal isOpen={isOpen}>
-        <IonHeader>
-          <IonToolbar>
-            <IonTitle>
-              My Bag
-            </IonTitle>
-            <IonButton slot ="end" onClick={onClose} >
-              <IonIcon slot= "icon-only" icon ={close}>
-              </IonIcon>
-            </IonButton>
-          </IonToolbar>
-        </IonHeader>
-        <IonContent className ="ion-padding">
+  return (
+    <IonModal isOpen={isOpen}>
+      <IonHeader>
+        <IonToolbar>
+          <IonTitle>
+            My Bag
+          </IonTitle>
+          <IonButton slot ="end" onClick={onClose} >
+            <IonIcon slot= "icon-only" icon ={close}>
+            </IonIcon>
+          </IonButton>
+        </IonToolbar>
+      </IonHeader>
+      <IonContent className ="ion-padding">
         <IonItem>
           <IonLabel>
-              Item 
-            </IonLabel>
+            {JSON.stringify(myBag)}
+          </IonLabel>
         </IonItem>
-        </IonContent>
+      </IonContent>
 
-        <IonButton onClick={onClose} href= "https://forms.gle/yjcNm1owrxcMzsxx7" target= "_blank"> Confirm
-        </IonButton>
-      </IonModal>
+      <IonButton onClick={onClose} href= "https://forms.gle/yjcNm1owrxcMzsxx7" target= "_blank"> Confirm
+      </IonButton>
+    </IonModal>
+  );
 }
 
