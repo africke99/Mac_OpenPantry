@@ -136,6 +136,8 @@ const Tab1: React.FC = () => {
     myBag[collection][name]++;
     setmyBag(myBag);
   }
+
+  //item nodes
   return (
     <IonApp>
       <IonPage>
@@ -159,8 +161,10 @@ const Tab1: React.FC = () => {
         <NumberList itemName={inventory} ></NumberList>
         <p className="ion-padding-start ion-padding-end"></p> */}
       </IonContent>
-      <MyModal isOpen={myModal.isOpen} 
-      onClose={() => setMyModal({isOpen:false})}/>
+      <MyModal
+        myBag={myBag}
+        isOpen={myModal.isOpen} 
+        onClose={() => setMyModal({isOpen:false})}/>
       <IonFooter>
         <IonToolbar>
           <IonButton id="myBag" slot="end" onClick={() =>  setMyModal({isOpen:true})}>Checkout
@@ -175,30 +179,32 @@ const Tab1: React.FC = () => {
 export default Tab1;
 
 // REFACTORING Modal
-const MyModal:React.FC<any> = ({isOpen, onClose}) => {
+const MyModal:React.FC<any> = ({isOpen, onClose, myBag}) => {
 
-  return <IonModal isOpen={isOpen}>
-        <IonHeader>
-          <IonToolbar>
-            <IonTitle>
-              My Bag
-            </IonTitle>
-            <IonButton slot ="end" onClick={onClose} >
-              <IonIcon slot= "icon-only" icon ={close}>
-              </IonIcon>
-            </IonButton>
-          </IonToolbar>
-        </IonHeader>
-        <IonContent className ="ion-padding">
+  return (
+    <IonModal isOpen={isOpen}>
+      <IonHeader>
+        <IonToolbar>
+          <IonTitle>
+            My Bag
+          </IonTitle>
+          <IonButton slot ="end" onClick={onClose} >
+            <IonIcon slot= "icon-only" icon ={close}>
+            </IonIcon>
+          </IonButton>
+        </IonToolbar>
+      </IonHeader>
+      <IonContent className ="ion-padding">
         <IonItem>
           <IonLabel>
-              Item 
-            </IonLabel>
+            {JSON.stringify(myBag)}
+          </IonLabel>
         </IonItem>
-        </IonContent>
+      </IonContent>
 
-        <IonButton onClick={onClose} href= "https://forms.gle/yjcNm1owrxcMzsxx7" target= "_blank"> Confirm
-        </IonButton>
-      </IonModal>
+      <IonButton onClick={onClose} href= "https://forms.gle/yjcNm1owrxcMzsxx7" target= "_blank"> Confirm
+      </IonButton>
+    </IonModal>
+  );
 }
 
