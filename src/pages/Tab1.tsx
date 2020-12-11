@@ -21,7 +21,7 @@ const collectionNames: Array<string> = ["Beans and Protein",
 async function returnAllDocs(collection:string): Promise<string[]>
 {
   //let test: Array<string>=["",""]; 
-  var returnArray:string[] = new Array(11);
+  var returnArray:string[] = new Array(15);
   let i: number = 0;
   return db.collection(collection).get().then(function(querySnapshot) {
     querySnapshot.forEach(function(doc) {
@@ -66,6 +66,36 @@ function changeInventory(food: string){
 //cookie
 //local storage API
 
+// export function setBagCookie(collection, item)  {
+//   //const date = new Date();
+//   //date.setTime(date.getTime() + 60*1000));
+//   //var col = collection;
+
+//   //FIGURE OUT EXPIRATION ^^^
+
+//   //document.write("Setting Cookies : ")   ???? needed?
+//   if (document.cookie.includes(item) {
+//       document.cookie = //FIGURE OUT HOW TO UPDATE THE QUANTITY WITHOUT ADDING A NEW ITEM
+//   }
+//   else(
+//     document.cookie = ("Category: " + collection + " , Item: " + item + " , Quantity: " + 1)
+//   )
+//   }
+
+// //TOOK THIS FROM https://gist.github.com/joduplessis/7b3b4340353760e945f972a69e855d11
+// //not sure if it would work at all
+// export function getCookie(item: string){
+//   const value = "; " + document.cookie;
+//   const parts = value.split("; " + item + "=");
+    
+//   if (parts.length == 2) {
+//       return parts.pop().split(";").shift();
+//   }
+// }
+
+// export function deleteCookie(item: string){
+//   //figure this out after you figure out how to set a cookie to expire
+// }
 
 
 const Tab1: React.FC = () => {
@@ -82,7 +112,7 @@ const Tab1: React.FC = () => {
 
     categoryLists.forEach(c => {
       let useDocsList = returnAllDocs(c);
-      
+      //console.log(c);
       useDocsList.then((docs: string[])=>{
         let itemList: string[];
         itemList = docs;
