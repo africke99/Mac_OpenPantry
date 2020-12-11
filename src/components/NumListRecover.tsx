@@ -28,8 +28,6 @@ import "./NumberList.css";
         const [showAlert1, setShowAlert1] = useState(false);
 
         const { itemName,subItems,updateBag } = item;
-        console.log(itemName);
-
 
         //setShowAlert1(true)
 

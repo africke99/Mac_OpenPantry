@@ -11,10 +11,6 @@ import { Component } from 'ionicons/dist/types/stencil-public-runtime';
 import { stringify } from 'querystring';
 import { promises } from 'dns';
 
-const collectionNames: Array<string> = ["Beans and Protein",
-"Beverages", "Bread and Tortillas", "Canned Fruits and Vegetables",
-"Flour, Oil, Spices", "Oatmeal and Cereal", "Personal Care",
-"Produce", "Rice and Pasta", "Sauces", "Snacks","Soups and Broth"];
 
 //https://firebase.google.com/docs/firestore/query-data/get-data
 //used firebase documentation as a guide for below function
@@ -35,15 +31,15 @@ async function returnAllDocs(collection:string): Promise<string[]>
 
 //https://sebhastian.com/react-firestore/ TESTING WITH THIS TUTORIAL
 const inventory= data.map((x) => {return (x.collection)} );
-console.log(inventory);
+//console.log(inventory);
 
-
-function changeInventory(food: string){
-
-    //words[food] = 1;
-    //var data = JSON.stringify(words);
-    //fs.writeFile('inventory.json',data);
+function updateFirestore(bag:{}){
+  //key returns collection name
+  //values return array like pair of item name and quantity
 }
+
+
+
 
 // //takes in the doc, finds it's collection, 
 // //adds the data to the 'bag' json
@@ -112,7 +108,6 @@ const Tab1: React.FC = () => {
 
     categoryLists.forEach(c => {
       let useDocsList = returnAllDocs(c);
-      //console.log(c);
       useDocsList.then((docs: string[])=>{
         let itemList: string[];
         itemList = docs;
@@ -122,7 +117,6 @@ const Tab1: React.FC = () => {
     })
     
   });
-  // const[add]
   const [myBag, setmyBag] = useState({});
 
   const updateBag = (collection:string, name:string) => {
@@ -134,6 +128,7 @@ const Tab1: React.FC = () => {
       myBag[collection][name] = 0;
     }
     myBag[collection][name]++;
+    updateFirestore(myBag);
     setmyBag(myBag);
   }
   return (
@@ -174,7 +169,10 @@ const Tab1: React.FC = () => {
 
 export default Tab1;
 
-// REFACTORING Modal
+//make MyModal its own tsx file?
+//can't access myBag when the modal is outside of the main tab1 frame
+
+// // REFACTORING Modal
 const MyModal:React.FC<any> = ({isOpen, onClose}) => {
 
   return <IonModal isOpen={isOpen}>
