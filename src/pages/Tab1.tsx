@@ -6,7 +6,7 @@ import './Tab1.css';
 import NumberList from '../components/NumListRecover';
 import data from './inventory.json';
 import { db } from '../components/Firebase/firebase2.js';
-import {close, help, basketOutline, basketSharp, ellipse, fastFoodOutline, fileTrayFullOutline, square, triangle } from 'ionicons/icons';
+import {close, help, basketOutline, basketSharp, ellipse, fastFoodOutline, fileTrayFullOutline, square, triangle, list } from 'ionicons/icons';
 import { Component } from 'ionicons/dist/types/stencil-public-runtime';
 import { stringify } from 'querystring';
 import { promises } from 'dns';
@@ -33,9 +33,20 @@ async function returnAllDocs(collection:string): Promise<string[]>
 const inventory= data.map((x) => {return (x.collection)} );
 //console.log(inventory);
 
+
+//not the most efficient, but here we are
 function updateFirestore(bag:{}){
   //key returns collection name
   //values return array like pair of item name and quantity
+  let listOfKeys = Object.keys(bag);
+  let valuePair = Object.values(bag);
+  let count:number = 0;
+  while(count<listOfKeys.length){
+    db.collection(listOfKeys[count]).doc(valuePair[count][0]).update({
+      "quantity" : valuePair[count][1]
+    })
+    count++;
+  }
 }
 
 
@@ -196,7 +207,6 @@ const MyModal:React.FC<any> = ({isOpen, onClose, myBag}) => {
           </IonLabel>
         </IonItem>
       </IonContent>
-
       <IonButton onClick={onClose} href= "https://forms.gle/yjcNm1owrxcMzsxx7" target= "_blank"> Confirm
       </IonButton>
     </IonModal>
