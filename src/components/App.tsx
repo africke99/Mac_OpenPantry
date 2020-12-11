@@ -87,7 +87,7 @@ const App: React.FC = () => {
      
         <IonReactRouter>
         <IonTabs>
-          <IonRouterOutlet style={{top:'6vh'}}>
+          <IonRouterOutlet >
             <Route path="/tab1" component={Tab1} exact={true} />
             <Route path="/" render={() => <Redirect to="/tab1" />} exact={true} />
           </IonRouterOutlet>

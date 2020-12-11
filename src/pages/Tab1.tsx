@@ -99,8 +99,9 @@ const Tab1: React.FC = () => {
       <IonPage>
         <IonContent fullscreen>
          <IonToolbar>
-           <IonTitle>Pantry Inventory</IonTitle>
-       
+           <IonTitle> 
+             Pantry Inventory
+             </IonTitle>
           </IonToolbar>
       
       <IonButton slot= "end" color= "danger" ></IonButton>

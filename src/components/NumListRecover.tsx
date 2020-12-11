@@ -9,13 +9,13 @@ import {
 
     } from '@ionic/react';
 
-import Tab1 from '../pages/Tab1';
 import { nodeModuleNameResolver } from 'typescript';
+import "./NumberList.css";
 
 async function returnAllDocs(collection:string): Promise<string[]>
 {
   //let test: Array<string>=["",""]; 
-  var returnArray:string[] = new Array(11);
+  var returnArray:string[] = new Array(16);
   let i: number = 0;
   return db.collection(collection).get().then(function(querySnapshot) {
     querySnapshot.forEach(function(doc) {
@@ -38,7 +38,7 @@ async function returnAllDocs(collection:string): Promise<string[]>
    
 
     const NumberList: React.FC<Item> = (item) => {
-        //const [showAlert1, setShowAlert1] = useState(false);
+        const [showAlert1, setShowAlert1] = useState(false);
 
         const { itemName,subItems } = item;
         console.log(itemName);
@@ -48,17 +48,41 @@ async function returnAllDocs(collection:string): Promise<string[]>
                 {itemName && itemName.map((i) => {
                 return (
                 <IonList>
-                    <IonListHeader>
+                    <IonListHeader >
+                    
                         <IonLabel>
-                            {i}
-                        </IonLabel>                        
-                    </IonListHeader>
+                        <strong> {i} </strong> 
+                        </IonLabel>                         
+                    </IonListHeader> 
                     {subItems[i] && subItems[i].map( element => {
                         return (
                         <IonItem>
                             <IonLabel>
-                                {element}
+                                <small> {element} </small>
                             </IonLabel>
+                            <IonButton slot= "end" color= "danger" onClick={() => setShowAlert1(true)} expand="block">Add Item </IonButton> 
+                            <IonAlert
+                    isOpen={showAlert1}
+                    onDidDismiss={() => setShowAlert1(false)}
+                    cssClass='my-custom-class'
+                    header={ i }
+                    //subHeader={'Subtitle'}
+                    message={'Would you like to keep shopping?'}
+                    buttons= {[
+                         {
+                             text: 'Keep Shopping',
+                             handler: () => {
+                                console.log('Continued shopping');
+                             }
+                        },
+                        {
+                            text: 'Cart',
+                            handler: () => {
+                                console.log("Check out to Cart");
+                            }
+                        }
+                        ]}
+                    />
                         </IonItem>)
                     })}
                  
