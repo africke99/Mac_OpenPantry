@@ -3,24 +3,17 @@ import React, { useState } from 'react';
 import { IonContent, IonModal, IonFooter, IonHeader, IonItem, IonLabel, IonNote, IonPage, IonTitle, IonToolbar, IonList, IonButton, IonFab, IonIcon, IonFabButton, IonApp } from '@ionic/react';
 import ExploreContainer from '../components/ExploreContainer';
 import './Tab1.css';
-import NumberList from '../components/NumListRecover';
-import data from './inventory.json';
+import InventoryDisplay from '../components/InventoryDisplay';
 import { db } from '../components/Firebase/firebase2.js';
 import {close, help, basketOutline, basketSharp, ellipse, fastFoodOutline, fileTrayFullOutline, square, triangle } from 'ionicons/icons';
 import { Component } from 'ionicons/dist/types/stencil-public-runtime';
 import { stringify } from 'querystring';
 import { promises } from 'dns';
 
-const collectionNames: Array<string> = ["Beans and Protein",
-"Beverages", "Bread and Tortillas", "Canned Fruits and Vegetables",
-"Flour, Oil, Spices", "Oatmeal and Cereal", "Personal Care",
-"Produce", "Rice and Pasta", "Sauces", "Snacks","Soups and Broth"];
-
 //https://firebase.google.com/docs/firestore/query-data/get-data
 //used firebase documentation as a guide for below function
 async function returnAllDocs(collection:string): Promise<string[]>
 {
-  //let test: Array<string>=["",""]; 
   var returnArray:string[] = new Array(11);
   let i: number = 0;
   return db.collection(collection).get().then(function(querySnapshot) {
@@ -33,40 +26,19 @@ async function returnAllDocs(collection:string): Promise<string[]>
  
 }
 
-//https://sebhastian.com/react-firestore/ TESTING WITH THIS TUTORIAL
-const inventory= data.map((x) => {return (x.collection)} );
-console.log(inventory);
-
-
-function changeInventory(food: string){
-
-    //words[food] = 1;
-    //var data = JSON.stringify(words);
-    //fs.writeFile('inventory.json',data);
+function updateFirestore(bag:{}){
+  //key returns collection name
+  //values return array like pair of item name and quantity
+  let listOfKeys = Object.keys(bag);
+  let valuePair = Object.values(bag);
+  let count:number = 0;
+  while(count<listOfKeys.length){
+    db.collection(listOfKeys[count]).doc(valuePair[count][0]).update({
+      "quantity" : valuePair[count][1]
+    })
+    count++;
+  }
 }
-
-// //takes in the doc, finds it's collection, 
-// //adds the data to the 'bag' json
-// //returns true when it is successful
-// function addItemtoInvent(doc:string) {
-//     var fs = require("fs");
-//     var getID = db.collection(doc);
-//     var getCol = getID.get();
-//     var itemToAdd = {};
-//     itemToAdd = {getCol, doc, "1"}
-
-//     fs.writeFile('inventory.json', JSON.stringify(itemToAdd), (err) => {
-//       if (err) {
-//         return false;
-//       }}
-      
-//   // if (! err) ===> return true;
-// }
-
-//cookie
-//local storage API
-
-
 
 const Tab1: React.FC = () => {
   const [myModal, setMyModal] = useState({ isOpen: false });
@@ -92,7 +64,6 @@ const Tab1: React.FC = () => {
     })
     
   });
-  // const[add]
 
   return (
     <IonApp>
@@ -105,23 +76,14 @@ const Tab1: React.FC = () => {
       
       <IonButton slot= "end" color= "danger" ></IonButton>
         <p className="ion-padding-start ion-padding-end"> </p>
-          <NumberList itemName={catList} subItems={docMap}  ></NumberList>
+          <InventoryDisplay itemName={catList} subItems={docMap}  ></InventoryDisplay>
           <p className="ion-padding-start ion-padding-end"></p>
 
-        {/* <p className="ion-padding-start ion-padding-end"> </p>
-        <NumberList itemName={inventory} ></NumberList>
-        <p className="ion-padding-start ion-padding-end"></p> */}
-      
-      {/* <IonButton slot= "end" color= "danger" ></IonButton>  */}
-        {/* <p className="ion-padding-start ion-padding-end"> </p>
-        <NumberList itemName={inventory} ></NumberList>
-        <p className="ion-padding-start ion-padding-end"></p> */}
         
       </IonContent>
       <MyModal isOpen={myModal.isOpen} 
       onClose={() => setMyModal({isOpen:false})}/>
       <IonFooter>
-        {/* // I think this should be My Bag instead of Checkout */}
         <IonToolbar>
           <IonButton id="myBag" slot="end" onClick={() =>  setMyModal({isOpen:true})}>Checkout
           </IonButton>
@@ -161,6 +123,3 @@ const MyModal:React.FC<any> = ({isOpen, onClose}) => {
         </IonButton>
       </IonModal>
 }
-
-
-
