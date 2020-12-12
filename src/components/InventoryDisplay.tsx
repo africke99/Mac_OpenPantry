@@ -10,7 +10,7 @@ import {
     } from '@ionic/react';
 
 import { nodeModuleNameResolver } from 'typescript';
-import "./NumberList.css";
+import "./InventoryDisplay.css";
 
 //look up how to build an artifact, seperate folder (/dist) 
 //put artifact in that folder

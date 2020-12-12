@@ -64,6 +64,19 @@ const Tab1: React.FC = () => {
     })
     
   });
+  const [myBag, setmyBag] = useState({});
+
+  const updateBag = (collection:string, name:string) => {
+    //check to see if item is already in
+    if (!(collection in myBag)) {
+      myBag[collection] = {}
+    }
+    if (!(name in myBag[collection])){
+      myBag[collection][name] = 0;
+    }
+    myBag[collection][name]++;
+    setmyBag(myBag);
+  }
 
   return (
     <IonApp>
@@ -76,12 +89,14 @@ const Tab1: React.FC = () => {
       
       <IonButton slot= "end" color= "danger" ></IonButton>
         <p className="ion-padding-start ion-padding-end"> </p>
-          <InventoryDisplay itemName={catList} subItems={docMap}  ></InventoryDisplay>
+          <InventoryDisplay itemName={catList} subItems={docMap} updateBag = {updateBag} ></InventoryDisplay>
           <p className="ion-padding-start ion-padding-end"></p>
 
         
       </IonContent>
-      <MyModal isOpen={myModal.isOpen} 
+      <MyModal 
+      myBag={myBag}
+      isOpen={myModal.isOpen} 
       onClose={() => setMyModal({isOpen:false})}/>
       <IonFooter>
         <IonToolbar>
@@ -97,7 +112,7 @@ const Tab1: React.FC = () => {
 export default Tab1;
 
 // REFACTORING Modal
-const MyModal:React.FC<any> = ({isOpen, onClose}) => {
+const MyModal:React.FC<any> = ({isOpen, onClose, myBag}) => {
 
   return <IonModal isOpen={isOpen}>
         <IonHeader>
@@ -114,7 +129,7 @@ const MyModal:React.FC<any> = ({isOpen, onClose}) => {
         <IonContent className ="ion-padding">
         <IonItem>
           <IonLabel>
-              Item 
+              {JSON.stringify(myBag)} 
             </IonLabel>
         </IonItem>
         </IonContent>
