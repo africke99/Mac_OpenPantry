@@ -66,23 +66,20 @@ const App: React.FC = () => {
 
   return(
   <IonApp>
-     <Router>
-      <div className = "App">
-        <IonApp>
-          <IonPage id="main">
-            <IonRouterOutlet>
-              <Route path="/tab1" component={Tab1} exact={true}/>
-              <Route path= "/HomePage" component={HomePage} exact={true}/>
-              <Route
-                path="/"
-                render= {() => <Redirect to="/HomePage" />}
-                exact={true}
-              />
-            </IonRouterOutlet>
-          </IonPage>
-        </IonApp>
-      </div>
-    </Router>
+    <IonReactRouter>
+      <IonPage id="main">
+        <IonRouterOutlet>
+          <Route path="/tab1" component={Tab1} exact={true}/>
+          <Route path= "/HomePage" component={HomePage} exact={true}/>
+          {/* <Route path= "/HomePage/tab1" component={Tab1} exact={true}/> */}
+          <Route
+            path="/"
+            render= {() => <Redirect to="/HomePage" />}
+            exact={true}
+            />
+        </IonRouterOutlet>
+      </IonPage>
+      </IonReactRouter>
     <IonHeader>
       <IonToolbar>
         <IonTitle>Macalester Pantry</IonTitle>

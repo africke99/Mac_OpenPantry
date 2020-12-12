@@ -25,6 +25,7 @@ import {
   IonPage
 } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
+import {useHistory } from "react-router";
 import './HomePage.css';
 
 
@@ -47,29 +48,33 @@ import '@ionic/react/css/display.css';
 /* Theme variables */
 import '../theme/variables.css';
 
-const HomePage = ({history}) => (
+const HomePage = () => {
+    
+  const history = useHistory();
 
+  return(
     <IonPage>
       <IonHeader>
         <IonToolbar color="primary">
-          <IonTitle>Home Page</IonTitle>
+          <IonTitle>Macalester Open Pantry</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent>
         <IonCard>
           <IonCardHeader>
-            <IonCardSubtitle>Home Page</IonCardSubtitle>
-            <IonCardTitle>Let's take a look at the blog</IonCardTitle>
+            <IonCardSubtitle>Welcome to the Open Pantry</IonCardSubtitle>
+            <IonCardTitle>Testing out text placement </IonCardTitle>
           </IonCardHeader>
           <IonCardContent>
             <p>Sounds like a great idea. Click the button below!</p>
   
-            <IonButton onClick={(e) => {
+            <IonButton onClick={() => {
                   history.push('/tab1')
-            }}>To Pantry Inventory</IonButton>
+            }}>View Pantry Inventory</IonButton>
           </IonCardContent>
         </IonCard>
       </IonContent>
     </IonPage>
-  )
+  );
+};
   export default HomePage;
