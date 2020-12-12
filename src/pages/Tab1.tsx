@@ -27,14 +27,12 @@ async function returnAllDocs(collection:string): Promise<string[]>
 }
 
 function updateFirestore(bag:{}){
-  //key returns collection name
-  //values return array like pair of item name and quantity
-  let listOfKeys = Object.keys(bag);
-  let valuePair = Object.values(bag);
+  let listOfCategories = Object.keys(bag);
+  let itemAndQuantities = Object.values(bag);
   let count:number = 0;
-  while(count<listOfKeys.length){
-    db.collection(listOfKeys[count]).doc(valuePair[count][0]).update({
-      "quantity" : valuePair[count][1]
+  while(count<listOfCategories.length){
+    db.collection(listOfCategories[count]).doc(Object.keys(itemAndQuantities[count])[0]).update({
+      "quantity" : Object.values(itemAndQuantities[count])[0]
     })
     count++;
   }
@@ -100,7 +98,7 @@ const Tab1: React.FC = () => {
       onClose={() => setMyModal({isOpen:false})}/>
       <IonFooter>
         <IonToolbar>
-          <IonButton id="myBag" slot="end" onClick={() =>  setMyModal({isOpen:true})}>Checkout
+          <IonButton id="myBag" slot="end" onClick={() =>  {setMyModal({isOpen:true}); updateFirestore(myBag);}}>Checkout
           </IonButton>
         </IonToolbar>
       </IonFooter>
@@ -133,7 +131,6 @@ const MyModal:React.FC<any> = ({isOpen, onClose, myBag}) => {
             </IonLabel>
         </IonItem>
         </IonContent>
-
         <IonButton onClick={onClose} href= "https://forms.gle/yjcNm1owrxcMzsxx7" target= "_blank"> Confirm
         </IonButton>
       </IonModal>
