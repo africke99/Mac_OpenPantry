@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { IonContent, IonModal, IonFooter, IonHeader, IonItem, IonLabel, IonNote, IonPage, IonTitle, IonToolbar, IonList, IonButton, IonFab, IonIcon, IonFabButton, IonApp } from '@ionic/react';
+import { IonContent, IonModal, IonFooter, IonHeader, IonItem, IonLabel, IonNote, IonPage, IonTitle, IonToolbar, IonList, IonButton, IonFab, IonIcon, IonFabButton, IonApp, IonBackButton } from '@ionic/react';
 import ExploreContainer from '../components/ExploreContainer';
 import './Tab1.css';
 import InventoryDisplay from '../components/InventoryDisplay';
@@ -81,6 +81,9 @@ const Tab1: React.FC = () => {
       <IonPage>
         <IonContent fullscreen>
          <IonToolbar>
+           <IonButton slot="start">
+             <IonBackButton />
+           </IonButton>
            <IonTitle>Pantry Inventory</IonTitle>
        
           </IonToolbar>
@@ -98,7 +101,7 @@ const Tab1: React.FC = () => {
       onClose={() => setMyModal({isOpen:false})}/>
       <IonFooter>
         <IonToolbar>
-          <IonButton id="myBag" slot="end" onClick={() =>  {setMyModal({isOpen:true}); updateFirestore(myBag);}}>Checkout
+          <IonButton id="myBag" slot="end" onClick={() =>  {setMyModal({isOpen:true}); updateFirestore(myBag);}}>My Bag
           </IonButton>
         </IonToolbar>
       </IonFooter>
