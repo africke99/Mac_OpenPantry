@@ -9,6 +9,9 @@ import {close, help, basketOutline, basketSharp, ellipse, fastFoodOutline, fileT
 import { Component } from 'ionicons/dist/types/stencil-public-runtime';
 import { stringify } from 'querystring';
 import { promises } from 'dns';
+import 'firebase/firestore';
+import firebase from "firebase";
+
 
 //https://firebase.google.com/docs/firestore/query-data/get-data
 //used firebase documentation as a guide for below function
@@ -32,7 +35,7 @@ function updateFirestore(bag:{}){
   let count:number = 0;
   while(count<listOfCategories.length){
     db.collection(listOfCategories[count]).doc(Object.keys(itemAndQuantities[count])[0]).update({
-      "quantity" : Object.values(itemAndQuantities[count])[0]
+      "quantity" :firebase.firestore.FieldValue.increment((-1)*Object.values(itemAndQuantities[count])[0])
     })
     count++;
   }
