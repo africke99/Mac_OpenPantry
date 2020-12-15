@@ -19,7 +19,7 @@ import {
   IonRouterLink,
   IonPage
 } from '@ionic/react';
-import { IonReactRouter } from '@ionic/react-router';
+import { IonReactRouter, IonReactHashRouter } from '@ionic/react-router';
 import { close, help, fileTrayFullOutline,} from 'ionicons/icons';
 import Tab1 from '../pages/Tab1';
 import HomePage from '../pages/HomePage';
@@ -105,14 +105,14 @@ const App: React.FC = () => {
         </IonButton>
       </IonButtons>
      
-        <IonReactRouter>
+        <IonReactHashRouter>
         {/* <IonTabs> */}
           <IonRouterOutlet >
             <Route path="/tab1" component={Tab1} exact={true} />
             <Route path="/homepage" component= {HomePage} exact={true}/>
             <Route path="/" render={() => <Redirect to="/homepage" />} exact={true} />
           </IonRouterOutlet>
-      </IonReactRouter>
+      </IonReactHashRouter>
       </IonContent>
   </IonApp>
    );
