@@ -104,10 +104,10 @@ const Tab1: React.FC = () => {
       <MyModal 
       myBag={myBag}
       isOpen={myModal.isOpen} 
-      onClose={() => setMyModal({isOpen:false})}/>
+      onClose={() => {setMyModal({isOpen:false});updateFirestore(myBag);}}/>
       <IonFooter>
         <IonToolbar>
-          <IonButton color="secondary" id="myBag" slot="end" onClick={() =>  {setMyModal({isOpen:true}); updateFirestore(myBag);}}>My Bag
+          <IonButton color="secondary" id="myBag" slot="end" onClick={() =>  setMyModal({isOpen:true})}>My Bag
           </IonButton>
         </IonToolbar>
       </IonFooter>
