@@ -48,13 +48,13 @@ import "./InventoryDisplay.css";
                             <IonLabel>
                                 <small> {element} </small>
                             </IonLabel>
-                            <IonButton slot= "end" color= "danger" onClick={() => {updateBag(i, element); setShowAlert1(true);}} expand="block">Add Item </IonButton> 
+                            <IonButton size="small" slot= "end" color= "secondary" onClick={() => {updateBag(i, element); setShowAlert1(true);}} expand="block">Add Item </IonButton> 
                             
                             <IonAlert
                     isOpen={showAlert1}
                     onDidDismiss={() => setShowAlert1(false)}
                     cssClass='my-custom-class'
-                    header={ i }
+                    header={ "Item Was Added!" }
                     //subHeader={'Subtitle'}
                     message={'Would you like to keep shopping?'}
                     buttons= {[

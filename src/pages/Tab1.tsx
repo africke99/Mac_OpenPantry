@@ -69,6 +69,8 @@ const Tab1: React.FC = () => {
 
   const updateBag = (collection:string, name:string) => {
     //check to see if item is already in
+    //var category = collection;
+    //var item = name;
     if (!(collection in myBag)) {
       myBag[collection] = {}
     }
@@ -77,6 +79,7 @@ const Tab1: React.FC = () => {
     }
     myBag[collection][name]++;
     setmyBag(myBag);
+    //return item;
   }
 
   return (
@@ -87,7 +90,7 @@ const Tab1: React.FC = () => {
            <IonButton slot="start">
              <IonBackButton />
            </IonButton>
-           <IonTitle>Pantry Inventory</IonTitle>
+           <IonTitle color="secondary">Pantry Inventory</IonTitle>
        
           </IonToolbar>
       
@@ -104,7 +107,7 @@ const Tab1: React.FC = () => {
       onClose={() => setMyModal({isOpen:false})}/>
       <IonFooter>
         <IonToolbar>
-          <IonButton id="myBag" slot="end" onClick={() =>  {setMyModal({isOpen:true}); updateFirestore(myBag);}}>My Bag
+          <IonButton color="secondary" id="myBag" slot="end" onClick={() =>  {setMyModal({isOpen:true}); updateFirestore(myBag);}}>My Bag
           </IonButton>
         </IonToolbar>
       </IonFooter>

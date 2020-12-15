@@ -83,7 +83,7 @@ const App: React.FC = () => {
 
     <IonHeader>
       <IonToolbar>
-        <IonTitle>Macalester Pantry</IonTitle>
+        <IonTitle size="large" color="secondary">Macalester Pantry</IonTitle>
         <IonButtons slot="end">
           <IonButton color="tertiary"  onClick={() =>  setQuestionModal({isOpen:true})} >
             <IonIcon slot="icon-only" icon ={help}>
