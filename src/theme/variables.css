@@ -89,9 +89,7 @@ http://ionicframework.com/docs/theming/ */
   --ion-color-light-shade: #d7d8da;
   --ion-color-light-tint: #f5f6f9;
 
-  /**background**/
-  --ion-background-color: #336699;
- }
+
 
 @media (prefers-color-scheme: dark) {
   /*
@@ -248,4 +246,5 @@ http://ionicframework.com/docs/theming/ */
   }
 
 
+}
 }

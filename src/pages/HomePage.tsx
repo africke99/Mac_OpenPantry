@@ -27,6 +27,7 @@ import {
 import { IonReactRouter } from '@ionic/react-router';
 import {useHistory } from "react-router";
 import './HomePage.css';
+import logo from './mac-shield.png';
 
 
 /* Core CSS required for Ionic components to work properly */
@@ -56,22 +57,23 @@ const HomePage: React.FC = () => {
     <IonApp>
       <IonPage>
         <IonHeader>
-          <IonToolbar>
-            <IonTitle>Macalester Open Pantry</IonTitle>
-          </IonToolbar>
         </IonHeader>
 
         <IonContent fullscreen>
+          <div className="container">
+            <img src={logo} alt="logo" />
+            {/* <img src= "./assets/mac-shield.png"></img> */}
+          </div>
+
           <IonCard>
            <IonCardHeader>
-              <IonCardSubtitle>Welcome to the Open Pantry</IonCardSubtitle>
               <IonCardTitle>Testing out text placement </IonCardTitle>
             </IonCardHeader>
             <IonCardContent>
-            <p>Testing Hello World </p>
               <IonButton onClick={() => {
                   history.push('/tab1')
             }}>View Pantry Inventory</IonButton>
+            <h2> Admin? Log in here</h2>
             </IonCardContent>
           </IonCard>
         </IonContent>
