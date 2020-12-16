@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { IonContent, IonModal, IonFooter, IonHeader, IonItem, IonLabel, IonNote, IonPage, IonTitle, IonToolbar, IonList, IonButton, IonFab, IonIcon, IonFabButton, IonApp, IonBackButton, IonButtons } from '@ionic/react';
+import { IonContent, IonModal, IonFooter, IonHeader, IonItem, IonLabel, IonNote, IonPage, IonTitle, IonToolbar, IonList, IonButton, IonFab, IonIcon, IonFabButton, IonApp, IonBackButton, IonButtons, IonText, IonRouterLink } from '@ionic/react';
 import ExploreContainer from '../components/ExploreContainer';
 import './Tab1.css';
 import InventoryDisplay from '../components/InventoryDisplay';
@@ -82,26 +82,41 @@ const Tab1: React.FC = () => {
     //return item;
   }
 
-  
+  const [questionModal, setQuestionModal] = useState({ isOpen: false });
+
 
   return (
     <IonApp>
       <IonPage>
         <IonContent fullscreen>
          <IonToolbar>
-           <IonButtons slot="start">
-             <IonBackButton defaultHref="/homepage" />
-           </IonButtons>
-           <IonTitle>Pantry Inventory</IonTitle>
+           <IonButton slot="start">
+             <IonBackButton />
+           </IonButton>
+           <IonTitle color="secondary">Pantry Inventory</IonTitle>
        
           </IonToolbar>
+          <QuestionModal isOpen={questionModal.isOpen} 
+      onClose={() => setQuestionModal({isOpen:false})}/>
+      <IonButtons slot= "primary">
+        <IonButton>
+          <IonIcon slot= "icon-only" name = "close">
+          </IonIcon>
+        </IonButton>
+      </IonButtons><QuestionModal isOpen={questionModal.isOpen} 
+      onClose={() => setQuestionModal({isOpen:false})}/>
+      <IonButtons slot= "primary">
+        <IonButton>
+          <IonIcon slot= "icon-only" name = "close">
+          </IonIcon>
+        </IonButton>
+      </IonButtons>
       
       <IonButton slot= "end" color= "danger" ></IonButton>
         <p className="ion-padding-start ion-padding-end"> </p>
           <InventoryDisplay itemName={catList} subItems={docMap} updateBag = {updateBag}></InventoryDisplay>
           <p className="ion-padding-start ion-padding-end"></p>
 
-        
       </IonContent>
       <MyModal 
       myBag={myBag}
@@ -109,7 +124,7 @@ const Tab1: React.FC = () => {
       onClose={() => {setMyModal({isOpen:false});updateFirestore(myBag);}}/>
       <IonFooter>
         <IonToolbar>
-          <IonButton color= "danger" id="myBag" slot="end" onClick={() =>  setMyModal({isOpen:true})}>My Bag
+          <IonButton className= "btnpadding" size= "large" color= "danger" id="myBag" slot="end" onClick={() =>  setMyModal({isOpen:true})}>My Bag
           </IonButton>
         </IonToolbar>
       </IonFooter>
@@ -151,5 +166,31 @@ const MyModal:React.FC<any> = ({isOpen, onClose, myBag}) => {
 
         <IonButton color = "danger" onClick={onClose} href= "https://forms.gle/yjcNm1owrxcMzsxx7" target= "_blank"> Check Out
         </IonButton>
+      </IonModal>
+}
+
+const QuestionModal:React.FC<any> = ({isOpen, onClose}) => {
+
+  return <IonModal isOpen={isOpen}>
+        <IonHeader>
+          <IonToolbar>
+            <IonTitle>
+              Welcome to the Open Pantry
+            </IonTitle>
+            <IonButton color= "secondary" slot ="end" onClick={onClose} >
+              <IonIcon slot= "icon-only" icon ={close}>
+              </IonIcon>
+            </IonButton>
+          </IonToolbar>
+        </IonHeader>
+        <IonContent className ="ion-padding">
+          <IonText>
+            <h3>
+              Welcome to the Mac Open Pantry! This is a textbox for more
+              info about the Open Pantry and things like that. Can't find an item? Request 
+              an item or make suggestions <IonRouterLink color= "secondary" href="https://forms.gle/yjcNm1owrxcMzsxx7" target="_blank">here!</IonRouterLink>
+            </h3>
+          </IonText>
+        </IonContent>
       </IonModal>
 }
