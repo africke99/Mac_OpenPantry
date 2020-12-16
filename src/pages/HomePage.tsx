@@ -5,11 +5,6 @@ import {
   IonButtons,
   IonHeader,
   IonIcon,
-  IonLabel,
-  IonRouterOutlet,
-  IonTabBar,
-  IonTabButton,
-  IonTabs,
   IonTitle,
   IonToolbar, 
   IonContent,
@@ -21,13 +16,15 @@ import {
   IonCardHeader,
   IonCardTitle,
   IonCardContent,
-  IonCardSubtitle,
-  IonPage
+  IonPage,
+  IonLabel,
+  IonItem
 } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
+import { close} from 'ionicons/icons';
 import {useHistory } from "react-router";
 import './HomePage.css';
-import logo from './mac-shield.png';
+import logo from './UPantryLogo-02.png';
 
 
 /* Core CSS required for Ionic components to work properly */
@@ -50,7 +47,7 @@ import '@ionic/react/css/display.css';
 import '../theme/variables.css';
 
 const HomePage: React.FC = () => {
-    
+  const [adminModal, setAdminnModal] = useState({ isOpen: false });    
   const history = useHistory();
 
   return(
@@ -62,18 +59,26 @@ const HomePage: React.FC = () => {
         <IonContent fullscreen>
           <div className="container">
             <img src={logo} alt="logo" />
-            {/* <img src= "./assets/mac-shield.png"></img> */}
           </div>
-
           <IonCard>
            <IonCardHeader>
-              <IonCardTitle>Testing out text placement </IonCardTitle>
+              {/* <IonCardTitle>Testing out text placement </IonCardTitle> */}
             </IonCardHeader>
             <IonCardContent>
-              <IonButton onClick={() => {
+              <IonButton size="large" onClick={() => {
                   history.push('/tab1')
             }}>View Pantry Inventory</IonButton>
-            <h2> Admin? Log in here</h2>
+             <IonItem>
+               <IonLabel> 
+                 Admin? Log in here!
+               </IonLabel>
+             </IonItem>
+             {/* <IonItem button onClick={() => { }}>
+          <IonLabel>
+            here.
+          </IonLabel>
+        </IonItem> */}
+            {/* <h2> Admin? Log in here</h2> */}
             </IonCardContent>
           </IonCard>
         </IonContent>
@@ -82,3 +87,29 @@ const HomePage: React.FC = () => {
   );
 };
   export default HomePage;
+
+  const adminModal:React.FC<any> = ({isOpen, onClose}) => {
+
+    return <IonModal isOpen={isOpen}>
+          <IonHeader>
+            <IonToolbar>
+              <IonTitle>
+                Welcome to the Open Pantry
+              </IonTitle>
+              <IonButton color= "secondary" slot ="end" onClick={onClose} >
+                <IonIcon slot= "icon-only" icon ={close}>
+                </IonIcon>
+              </IonButton>
+            </IonToolbar>
+          </IonHeader>
+          <IonContent className ="ion-padding">
+            <IonText>
+              <h3>
+                Welcome to the Mac Open Pantry! This is a textbox for more
+                info about the Open Pantry and things like that. Can't find an item? Request 
+                an item or make suggestions <IonRouterLink color= "secondary" href="https://forms.gle/yjcNm1owrxcMzsxx7" target="_blank">here!</IonRouterLink>
+              </h3>
+            </IonText>
+          </IonContent>
+        </IonModal>
+  }

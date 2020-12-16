@@ -61,7 +61,7 @@ import "./InventoryDisplay.css";
                     isOpen={showAlert1}
                     onDidDismiss={() => setShowAlert1(false)}
                     cssClass='my-custom-class'
-                    header={ `${clickedItemName} was added to cart` }
+                    header={ `${clickedItemName} was added to your bag.` }
                     //subHeader={'Subtitle'}
                     message={'Would you like to keep shopping?'}
                     buttons= {[
@@ -72,9 +72,11 @@ import "./InventoryDisplay.css";
                              }
                         },
                         {
-                            text: 'Cart',
+                            text: 'My Bag',
                             handler: () => {
-                                console.log("Check out to Cart");
+                                // setMyModal({isOpen:true});
+                                console.log("Check out to my Bag");
+
                             }
                         }
                         ]}

@@ -89,17 +89,10 @@ const Tab1: React.FC = () => {
       <IonPage>
         <IonContent fullscreen>
          <IonToolbar>
-<<<<<<< HEAD
            <IonButtons slot="start">
              <IonBackButton defaultHref="/homepage" />
            </IonButtons>
            <IonTitle>Pantry Inventory</IonTitle>
-=======
-           <IonButton slot="start">
-             <IonBackButton />
-           </IonButton>
-           <IonTitle color="secondary">Pantry Inventory</IonTitle>
->>>>>>> 027a7d1908ec0537677867e761bca5b97a1cbdf7
        
           </IonToolbar>
       
@@ -116,7 +109,7 @@ const Tab1: React.FC = () => {
       onClose={() => {setMyModal({isOpen:false});updateFirestore(myBag);}}/>
       <IonFooter>
         <IonToolbar>
-          <IonButton color= "danger" id="myBag" slot="end" onClick={() =>  setMyModal({isOpen:true})}>Checkout
+          <IonButton color= "danger" id="myBag" slot="end" onClick={() =>  setMyModal({isOpen:true})}>My Bag
           </IonButton>
         </IonToolbar>
       </IonFooter>
@@ -156,7 +149,7 @@ const MyModal:React.FC<any> = ({isOpen, onClose, myBag}) => {
         
         </IonContent>
 
-        <IonButton color = "danger" onClick={onClose} href= "https://forms.gle/yjcNm1owrxcMzsxx7" target= "_blank"> Confirm
+        <IonButton color = "danger" onClick={onClose} href= "https://forms.gle/yjcNm1owrxcMzsxx7" target= "_blank"> Check Out
         </IonButton>
       </IonModal>
 }
