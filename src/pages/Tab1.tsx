@@ -81,17 +81,18 @@ const Tab1: React.FC = () => {
 
   const [questionModal, setQuestionModal] = useState({ isOpen: false });
 
-
   return (
     <IonApp>
       <IonPage>
         <IonContent fullscreen>
          <IonToolbar>
            <IonButton color = "secondary" slot="start">
-             <IonBackButton/>
+            <IonBackButton defaultHref="homepage" />
            </IonButton>
+           <IonButton slot="end" onClick={() => setQuestionModal({isOpen:true})}>
+             <IonIcon slot= "icon-only" icon ={help}> </IonIcon>
+          </IonButton>
            <IonTitle color="secondary">Pantry Inventory</IonTitle>
-       
           </IonToolbar>
           <QuestionModal isOpen={questionModal.isOpen} 
       onClose={() => setQuestionModal({isOpen:false})}/>
@@ -108,12 +109,10 @@ const Tab1: React.FC = () => {
           </IonIcon>
         </IonButton>
       </IonButtons>
-      
       <IonButton slot= "end" color= "danger" ></IonButton>
         <p className="ion-padding-start ion-padding-end"> </p>
           <InventoryDisplay itemName={catList} subItems={docMap} updateBag = {updateBag} setMyModal={setMyModal}></InventoryDisplay>
-          <p className="ion-padding-start ion-padding-end"></p>
-
+          <p className="ion-padding-start ion-padding-end"></p> 
       </IonContent>
       <MyModal 
       myBag={myBag}
