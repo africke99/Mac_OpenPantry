@@ -1,21 +1,19 @@
 # Mac Open Pantry
-MAC OPEN PANTRY APP is an web app to facilitate the organization of Mac Open Pantry
-
-[Ionic](https://ionicframework.com/) (Ionic website link)
+A web app to facilitate the organization of Mac Open Pantry
 
 ## About
 
-As students in a Software Development Course in the Computer Science Department, we recognized the need for automation of the pantry's inventory. Prior to this app, students were required to fill out a paper form about their visit. The app provides a backend database for organizing the pantry's inventory usinf Firebase's firestore. 
+As students in the "Software Development" course in the Macalester Computer Science Department, we recognized the need for automation of the pantry's inventory. Prior to this app, students were required to fill out a paper form about their visit. The app provides a backend database for organizing the pantry's inventory usinf Firebase's firestore. 
 The Macalester College Open Pantry is located in the bottom floor of the Ruth Stricker Dayton Campus Center.
 Anyone is welcome to visit and take what they need.
 
 ## For Users
 
-- Open this [website link](https://africke99.github.io/Mac_OpenPantry.github.io/) and follow along with given instructions 
+- Open this [website link](https://africke99.github.io/Mac_OpenPantry.github.io/) and follow along with given instructions to navigate through the web app
 
 ## For Developers 
 
-##### Things to Download* and Open:
+### Things to Download* and Open:
 
 - The latest version of [Node.js and npm](https://ionicframework.com/docs/installation/environment). If not already installed, download [here](https://nodejs.org/en/download/).
 - Make sure you have [Cordova](https://cordova.apache.org/) installed. If not, run `npm install -g cordova`.
@@ -26,12 +24,12 @@ Anyone is welcome to visit and take what they need.
 - Download or clone the Mac Open Pantry repository.
 ##### *all the imports can be installed in the Command Prompt or your code editor's terminal
 
-###### Testing the Web App
+### Testing the Web App
 
 - In a terminal run `ionic serve` to preview the web app as a local host page
 - To check if the database has been accurately updated, reference the Mac Open Pantry's Firebase Firestore database at this [link](https://console.firebase.google.com/u/1/project/mac-openpantry/firestore/).
 
-###### Deploying to GitHub Pages
+### Deploying to GitHub Pages
 
 - Create a new branch "gh-pages"
 - In gitHub, navigate to settings, specify gh-pages as your branch, and /(root)
@@ -41,7 +39,7 @@ Anyone is welcome to visit and take what they need.
 - In terminal: `git subtree push --prefix dist origin gh-pages`
 - Use the link in gitHub settings to navigate to your deployed web app!
 
-## References
+## References Used in Development
 
 - [Firebase Tutorial](https://www.robinwieruch.de/complete-firebase-authentication-react-tutorial#manage-users-with-firebases-realtime-database-in-react)
 
@@ -62,7 +60,7 @@ Anyone is welcome to visit and take what they need.
 - Lin, Grace
 - Maya, Zully
 
-### With the Help Of
+## With the Help Of
 - Professor Lauren Milne
 - Professor Paul Canterell
 - Nugen, Ahn
