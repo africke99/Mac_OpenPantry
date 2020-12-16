@@ -22,12 +22,14 @@ import "./InventoryDisplay.css";
         subItems?: {[category: string]: string[] | undefined;};
         updateBag?: Function;
     }
-  
+
 
     const NumberList: React.FC<Item> = (item) => {
         const [showAlert1, setShowAlert1] = useState(false);
+        
 
         const { itemName,subItems,updateBag } = item;
+        
 
         //setShowAlert1(true)
 
@@ -56,18 +58,18 @@ import "./InventoryDisplay.css";
                     cssClass='my-custom-class'
                     header={ "Item Was Added!" }
                     //subHeader={'Subtitle'}
-                    message={'Would you like to keep shopping?'}
+                    message={'Would you like to keep browsing?'}
                     buttons= {[
                          {
-                             text: 'Keep Shopping',
+                             text: 'Keep browsing',
                              handler: () => {
-                                console.log('Continued shopping');
+                                console.log('Continued browsing');
                              }
                         },
                         {
-                            text: 'Cart',
+                            text: 'My Bag',
                             handler: () => {
-                                console.log("Check out to Cart");
+                                console.log("Go to My Bag");
                             }
                         }
                         ]}

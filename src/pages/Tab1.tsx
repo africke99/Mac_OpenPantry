@@ -82,6 +82,8 @@ const Tab1: React.FC = () => {
     //return item;
   }
 
+  
+
   return (
     <IonApp>
       <IonPage>
@@ -96,7 +98,7 @@ const Tab1: React.FC = () => {
       
       <IonButton slot= "end" color= "danger" ></IonButton>
         <p className="ion-padding-start ion-padding-end"> </p>
-          <InventoryDisplay itemName={catList} subItems={docMap} updateBag = {updateBag} ></InventoryDisplay>
+          <InventoryDisplay itemName={catList} subItems={docMap} updateBag = {updateBag}></InventoryDisplay>
           <p className="ion-padding-start ion-padding-end"></p>
 
         
