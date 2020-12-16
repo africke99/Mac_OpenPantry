@@ -9,6 +9,9 @@ import {close, help, basketOutline, basketSharp, ellipse, fastFoodOutline, fileT
 import { Component } from 'ionicons/dist/types/stencil-public-runtime';
 import { stringify } from 'querystring';
 import { promises } from 'dns';
+import 'firebase/firestore';
+import firebase from "firebase";
+
 
 //https://firebase.google.com/docs/firestore/query-data/get-data
 //used firebase documentation as a guide for below function
@@ -32,7 +35,7 @@ function updateFirestore(bag:{}){
   let count:number = 0;
   while(count<listOfCategories.length){
     db.collection(listOfCategories[count]).doc(Object.keys(itemAndQuantities[count])[0]).update({
-      "quantity" : Object.values(itemAndQuantities[count])[0]
+      "quantity" :firebase.firestore.FieldValue.increment((-1)*Object.values(itemAndQuantities[count])[0])
     })
     count++;
   }
@@ -66,6 +69,8 @@ const Tab1: React.FC = () => {
 
   const updateBag = (collection:string, name:string) => {
     //check to see if item is already in
+    //var category = collection;
+    //var item = name;
     if (!(collection in myBag)) {
       myBag[collection] = {}
     }
@@ -74,23 +79,33 @@ const Tab1: React.FC = () => {
     }
     myBag[collection][name]++;
     setmyBag(myBag);
+    //return item;
   }
+
+  
 
   return (
     <IonApp>
       <IonPage>
         <IonContent fullscreen>
          <IonToolbar>
+<<<<<<< HEAD
            <IonButtons slot="start">
              <IonBackButton defaultHref="/homepage" />
            </IonButtons>
            <IonTitle>Pantry Inventory</IonTitle>
+=======
+           <IonButton slot="start">
+             <IonBackButton />
+           </IonButton>
+           <IonTitle color="secondary">Pantry Inventory</IonTitle>
+>>>>>>> 027a7d1908ec0537677867e761bca5b97a1cbdf7
        
           </IonToolbar>
       
       <IonButton slot= "end" color= "danger" ></IonButton>
         <p className="ion-padding-start ion-padding-end"> </p>
-          <InventoryDisplay itemName={catList} subItems={docMap} updateBag = {updateBag} ></InventoryDisplay>
+          <InventoryDisplay itemName={catList} subItems={docMap} updateBag = {updateBag}></InventoryDisplay>
           <p className="ion-padding-start ion-padding-end"></p>
 
         
@@ -98,10 +113,10 @@ const Tab1: React.FC = () => {
       <MyModal 
       myBag={myBag}
       isOpen={myModal.isOpen} 
-      onClose={() => setMyModal({isOpen:false})}/>
+      onClose={() => {setMyModal({isOpen:false});updateFirestore(myBag);}}/>
       <IonFooter>
         <IonToolbar>
-          <IonButton id="myBag" slot="end" onClick={() =>  {setMyModal({isOpen:true}); updateFirestore(myBag);}}>My Bag
+          <IonButton color= "danger" id="myBag" slot="end" onClick={() =>  setMyModal({isOpen:true})}>Checkout
           </IonButton>
         </IonToolbar>
       </IonFooter>
@@ -114,27 +129,34 @@ export default Tab1;
 
 // REFACTORING Modal
 const MyModal:React.FC<any> = ({isOpen, onClose, myBag}) => {
-
+  let items = Object.values(myBag);
+  
   return <IonModal isOpen={isOpen}>
         <IonHeader>
           <IonToolbar>
             <IonTitle>
               My Bag
             </IonTitle>
-            <IonButton slot ="end" onClick={onClose} >
+            <IonButton color="danger" slot ="end" onClick={onClose} >
               <IonIcon slot= "icon-only" icon ={close}>
               </IonIcon>
             </IonButton>
           </IonToolbar>
         </IonHeader>
         <IonContent className ="ion-padding">
-        <IonItem>
-          <IonLabel>
-              {JSON.stringify(myBag)} 
-            </IonLabel>
-        </IonItem>
+        {items.map((item) => {
+          return Object.entries(item).map((entry) => {
+            return(<IonItem>
+              <IonLabel>
+                    {entry[0]} 
+                  </IonLabel> 
+                  </IonItem> )})
+          })
+          }
+        
         </IonContent>
-        <IonButton onClick={onClose} href= "https://forms.gle/yjcNm1owrxcMzsxx7" target= "_blank"> Confirm
+
+        <IonButton color = "danger" onClick={onClose} href= "https://forms.gle/yjcNm1owrxcMzsxx7" target= "_blank"> Confirm
         </IonButton>
       </IonModal>
 }

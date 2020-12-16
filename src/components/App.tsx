@@ -19,7 +19,7 @@ import {
   IonRouterLink,
   IonPage
 } from '@ionic/react';
-import { IonReactRouter } from '@ionic/react-router';
+import { IonReactRouter, IonReactHashRouter } from '@ionic/react-router';
 import { close, help, fileTrayFullOutline,} from 'ionicons/icons';
 import Tab1 from '../pages/Tab1';
 import HomePage from '../pages/HomePage';
@@ -82,10 +82,10 @@ const App: React.FC = () => {
       </IonReactRouter> */}
 
     <IonHeader>
-      <IonToolbar>
-        <IonTitle>Macalester Pantry</IonTitle>
+      <IonToolbar color= "secondary">
+        <IonTitle color="primary">Macalester Pantry</IonTitle>
         <IonButtons slot="end">
-          <IonButton color="tertiary"  onClick={() =>  setQuestionModal({isOpen:true})} >
+          <IonButton color="primary"  onClick={() =>  setQuestionModal({isOpen:true})} >
             <IonIcon slot="icon-only" icon ={help}>
             </IonIcon>
           </IonButton>
@@ -105,14 +105,14 @@ const App: React.FC = () => {
         </IonButton>
       </IonButtons>
      
-        <IonReactRouter>
+        <IonReactHashRouter>
         {/* <IonTabs> */}
           <IonRouterOutlet >
             <Route path="/tab1" component={Tab1} exact={true} />
             <Route path="/homepage" component= {HomePage} exact={true}/>
             <Route path="/" render={() => <Redirect to="/homepage" />} exact={true} />
           </IonRouterOutlet>
-      </IonReactRouter>
+      </IonReactHashRouter>
       </IonContent>
   </IonApp>
    );
@@ -127,18 +127,18 @@ const QuestionModal:React.FC<any> = ({isOpen, onClose}) => {
             <IonTitle>
               Welcome to the Open Pantry
             </IonTitle>
-            <IonButton slot ="end" onClick={onClose} >
+            <IonButton color= "secondary" slot ="end" onClick={onClose} >
               <IonIcon slot= "icon-only" icon ={close}>
               </IonIcon>
             </IonButton>
           </IonToolbar>
         </IonHeader>
         <IonContent className ="ion-padding">
-          <IonText color= "secondary">
+          <IonText>
             <h3>
               Welcome to the Mac Open Pantry! This is a textbox for more
               info about the Open Pantry and things like that. Can't find an item? Request 
-              an item or make suggestions <IonRouterLink color= "primary" href="https://forms.gle/yjcNm1owrxcMzsxx7" target="_blank">here!</IonRouterLink>
+              an item or make suggestions <IonRouterLink color= "secondary" href="https://forms.gle/yjcNm1owrxcMzsxx7" target="_blank">here!</IonRouterLink>
             </h3>
           </IonText>
         </IonContent>
