@@ -11,6 +11,7 @@ import { stringify } from 'querystring';
 import { promises } from 'dns';
 import 'firebase/firestore';
 import firebase from "firebase";
+import MyModal from '../components/MyModal';
 
 
 //https://firebase.google.com/docs/firestore/query-data/get-data
@@ -68,9 +69,6 @@ const Tab1: React.FC = () => {
   const [myBag, setmyBag] = useState({});
 
   const updateBag = (collection:string, name:string) => {
-    //check to see if item is already in
-    //var category = collection;
-    //var item = name;
     if (!(collection in myBag)) {
       myBag[collection] = {}
     }
@@ -79,7 +77,6 @@ const Tab1: React.FC = () => {
     }
     myBag[collection][name]++;
     setmyBag(myBag);
-    //return item;
   }
 
   
@@ -89,16 +86,16 @@ const Tab1: React.FC = () => {
       <IonPage>
         <IonContent fullscreen>
          <IonToolbar>
-           <IonButton slot="start">
-             <IonBackButton />
-           </IonButton>
+           {/* <IonButton color = "secondary" slot="start">
+             <IonBackButton/>
+           </IonButton> */}
            <IonTitle color="secondary">Pantry Inventory</IonTitle>
        
           </IonToolbar>
       
       <IonButton slot= "end" color= "danger" ></IonButton>
         <p className="ion-padding-start ion-padding-end"> </p>
-          <InventoryDisplay itemName={catList} subItems={docMap} updateBag = {updateBag}></InventoryDisplay>
+          <InventoryDisplay itemName={catList} subItems={docMap} updateBag = {updateBag} setMyModal={setMyModal}></InventoryDisplay>
           <p className="ion-padding-start ion-padding-end"></p>
 
         
@@ -119,37 +116,3 @@ const Tab1: React.FC = () => {
 };
 
 export default Tab1;
-
-// REFACTORING Modal
-const MyModal:React.FC<any> = ({isOpen, onClose, myBag}) => {
-  let items = Object.values(myBag);
-  
-  return <IonModal isOpen={isOpen}>
-        <IonHeader>
-          <IonToolbar>
-            <IonTitle>
-              My Bag
-            </IonTitle>
-            <IonButton color="danger" slot ="end" onClick={onClose} >
-              <IonIcon slot= "icon-only" icon ={close}>
-              </IonIcon>
-            </IonButton>
-          </IonToolbar>
-        </IonHeader>
-        <IonContent className ="ion-padding">
-        {items.map((item) => {
-          return Object.entries(item).map((entry) => {
-            return(<IonItem>
-              <IonLabel>
-                    {entry[0]} 
-                  </IonLabel> 
-                  </IonItem> )})
-          })
-          }
-        
-        </IonContent>
-
-        <IonButton color = "danger" onClick={onClose} href= "https://forms.gle/yjcNm1owrxcMzsxx7" target= "_blank"> Confirm
-        </IonButton>
-      </IonModal>
-}
