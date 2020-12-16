@@ -76,7 +76,7 @@ import firebase from "firebase";
                              handler: () => {}
                         },
                         {
-                            text: 'Cart',
+                            text: 'My Bag',
                             handler: () => {
                                 setMyModal({isOpen:true})
                             }

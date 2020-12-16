@@ -1,0 +1,15 @@
+.container{
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.container img{
+    height: auto; 
+}
+
+.card-padding{
+    top:  50%;
+
+}

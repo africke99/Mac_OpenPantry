@@ -5,11 +5,6 @@ import {
   IonButtons,
   IonHeader,
   IonIcon,
-  IonLabel,
-  IonRouterOutlet,
-  IonTabBar,
-  IonTabButton,
-  IonTabs,
   IonTitle,
   IonToolbar, 
   IonContent,
@@ -21,12 +16,16 @@ import {
   IonCardHeader,
   IonCardTitle,
   IonCardContent,
-  IonCardSubtitle,
-  IonPage
+  IonPage,
+  IonLabel,
+  IonItem,
+  IonList
 } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
+import { close} from 'ionicons/icons';
 import {useHistory } from "react-router";
 import './HomePage.css';
+import logo from './UPantryLogo-02.png';
 
 
 /* Core CSS required for Ionic components to work properly */
@@ -49,29 +48,31 @@ import '@ionic/react/css/display.css';
 import '../theme/variables.css';
 
 const HomePage: React.FC = () => {
-    
+  const [adminModal, setAdminnModal] = useState({ isOpen: false });    
   const history = useHistory();
 
   return(
     <IonApp>
       <IonPage>
         <IonHeader>
-          <IonToolbar>
-            <IonTitle>Macalester Open Pantry</IonTitle>
-          </IonToolbar>
         </IonHeader>
 
         <IonContent fullscreen>
+          <div className="container">
+            <img src={logo} alt="logo" />
+          </div>
           <IonCard>
            <IonCardHeader>
-              <IonCardSubtitle>Welcome to the Open Pantry</IonCardSubtitle>
-              <IonCardTitle>Testing out text placement </IonCardTitle>
             </IonCardHeader>
-            <IonCardContent>
-            <p>Testing Hello World </p>
-              <IonButton onClick={() => {
+            <IonCardContent className= "card-padding">
+              <IonButton  expand="block" className= "btn-padding" size="large" onClick={() => {
                   history.push('/tab1')
             }}>View Pantry Inventory</IonButton>
+             <IonItem>
+               <IonLabel> 
+                 Admin? Log in <IonRouterLink color= "secondary" href="https://idp.quicklaunchsso.com/macalester" target="_blank">here!</IonRouterLink>
+               </IonLabel>
+             </IonItem>
             </IonCardContent>
           </IonCard>
         </IonContent>
@@ -80,3 +81,29 @@ const HomePage: React.FC = () => {
   );
 };
   export default HomePage;
+
+  const adminModal:React.FC<any> = ({isOpen, onClose}) => {
+
+    return <IonModal isOpen={isOpen}>
+          <IonHeader>
+            <IonToolbar>
+              <IonTitle>
+                Welcome to the Open Pantry
+              </IonTitle>
+              <IonButton color= "secondary" slot ="end" onClick={onClose} >
+                <IonIcon slot= "icon-only" icon ={close}>
+                </IonIcon>
+              </IonButton>
+            </IonToolbar>
+          </IonHeader>
+          <IonContent className ="ion-padding">
+            <IonText>
+              <h3>
+                Welcome to the Mac Open Pantry! This is a textbox for more
+                info about the Open Pantry and things like that. Can't find an item? Request 
+                an item or make suggestions <IonRouterLink color= "secondary" href="https://forms.gle/yjcNm1owrxcMzsxx7" target="_blank">here!</IonRouterLink>
+              </h3>
+            </IonText>
+          </IonContent>
+        </IonModal>
+  }

@@ -65,48 +65,10 @@ const App: React.FC = () => {
 
   return(
   <IonApp>
-
-    {/* <IonReactRouter>
-      <IonPage id="main">
-        <IonRouterOutlet>
-          <Route path="/tab1" component={Tab1} exact={true}/> */}
-          {/* <Route path= "/HomePage" component={HomePage} exact={true}/> */}
-          {/* <Route path= "/HomePage/tab1" component={Tab1} exact={true}/> */}
-          {/* <Route
-            path="/"
-            render= {() => <Redirect to="/HomePage" />}
-            exact={true}
-            />
-        </IonRouterOutlet>
-      </IonPage>
-      </IonReactRouter> */}
-
-    <IonHeader>
-      <IonToolbar color= "secondary">
-        <IonTitle color="primary">Macalester Pantry</IonTitle>
-        <IonButtons slot="end">
-          <IonButton color="primary"  onClick={() =>  setQuestionModal({isOpen:true})} >
-            <IonIcon slot="icon-only" icon ={help}>
-            </IonIcon>
-          </IonButton>
-        </IonButtons>
-      </IonToolbar>
-    </IonHeader>
-   
-
+ 
 {/* // Create a popup message with the help  icon so we only have checkout on the bottom. */}
-    <IonContent>
-      <QuestionModal isOpen={questionModal.isOpen} 
-      onClose={() => setQuestionModal({isOpen:false})}/>
-      <IonButtons slot= "primary">
-        <IonButton>
-          <IonIcon slot= "icon-only" name = "close">
-          </IonIcon>
-        </IonButton>
-      </IonButtons>
-     
+    <IonContent>     
         <IonReactHashRouter>
-        {/* <IonTabs> */}
           <IonRouterOutlet >
             <Route path="/tab1" component={Tab1} exact={true} />
             <Route path="/homepage" component= {HomePage} exact={true}/>
@@ -118,29 +80,3 @@ const App: React.FC = () => {
    );
   };
 export default App;
-
-const QuestionModal:React.FC<any> = ({isOpen, onClose}) => {
-
-  return <IonModal isOpen={isOpen}>
-        <IonHeader>
-          <IonToolbar>
-            <IonTitle>
-              Welcome to the Open Pantry
-            </IonTitle>
-            <IonButton color= "secondary" slot ="end" onClick={onClose} >
-              <IonIcon slot= "icon-only" icon ={close}>
-              </IonIcon>
-            </IonButton>
-          </IonToolbar>
-        </IonHeader>
-        <IonContent className ="ion-padding">
-          <IonText>
-            <h3>
-              Welcome to the Mac Open Pantry! This is a textbox for more
-              info about the Open Pantry and things like that. Can't find an item? Request 
-              an item or make suggestions <IonRouterLink color= "secondary" href="https://forms.gle/yjcNm1owrxcMzsxx7" target="_blank">here!</IonRouterLink>
-            </h3>
-          </IonText>
-        </IonContent>
-      </IonModal>
-}
