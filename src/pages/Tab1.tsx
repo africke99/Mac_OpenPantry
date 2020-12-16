@@ -8,7 +8,7 @@ import { db } from '../components/Firebase/firebase2.js';
 import {close, help, basketOutline, basketSharp, ellipse, fastFoodOutline, fileTrayFullOutline, square, triangle } from 'ionicons/icons';
 import { Component } from 'ionicons/dist/types/stencil-public-runtime';
 import { stringify } from 'querystring';
-import { promises } from 'dns';
+import { AnyARecord, promises } from 'dns';
 
 //https://firebase.google.com/docs/firestore/query-data/get-data
 //used firebase documentation as a guide for below function
@@ -100,7 +100,7 @@ const Tab1: React.FC = () => {
       onClose={() => setMyModal({isOpen:false})}/>
       <IonFooter>
         <IonToolbar>
-          <IonButton id="myBag" slot="end" onClick={() =>  setMyModal({isOpen:true})}>Checkout
+          <IonButton color= "danger" id="myBag" slot="end" onClick={() =>  setMyModal({isOpen:true})}>Checkout
           </IonButton>
         </IonToolbar>
       </IonFooter>
@@ -113,28 +113,34 @@ export default Tab1;
 
 // REFACTORING Modal
 const MyModal:React.FC<any> = ({isOpen, onClose, myBag}) => {
-
+  let items = Object.values(myBag);
+  
   return <IonModal isOpen={isOpen}>
         <IonHeader>
           <IonToolbar>
             <IonTitle>
               My Bag
             </IonTitle>
-            <IonButton slot ="end" onClick={onClose} >
+            <IonButton color="danger" slot ="end" onClick={onClose} >
               <IonIcon slot= "icon-only" icon ={close}>
               </IonIcon>
             </IonButton>
           </IonToolbar>
         </IonHeader>
         <IonContent className ="ion-padding">
-        <IonItem>
-          <IonLabel>
-              {JSON.stringify(myBag)} 
-            </IonLabel>
-        </IonItem>
+        {items.map((item) => {
+          return Object.entries(item).map((entry) => {
+            return(<IonItem>
+              <IonLabel>
+                    {entry[0]} 
+                  </IonLabel> 
+                  </IonItem> )})
+          })
+          }
+        
         </IonContent>
 
-        <IonButton onClick={onClose} href= "https://forms.gle/yjcNm1owrxcMzsxx7" target= "_blank"> Confirm
+        <IonButton color = "danger" onClick={onClose} href= "https://forms.gle/yjcNm1owrxcMzsxx7" target= "_blank"> Confirm
         </IonButton>
       </IonModal>
 }

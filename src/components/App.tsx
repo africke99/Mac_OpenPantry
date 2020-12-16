@@ -81,10 +81,10 @@ const App: React.FC = () => {
       </IonPage>
       </IonReactRouter>
     <IonHeader>
-      <IonToolbar>
-        <IonTitle>Macalester Pantry</IonTitle>
+      <IonToolbar color= "secondary">
+        <IonTitle color="primary">Macalester Pantry</IonTitle>
         <IonButtons slot="end">
-          <IonButton color="tertiary"  onClick={() =>  setQuestionModal({isOpen:true})} >
+          <IonButton color="primary"  onClick={() =>  setQuestionModal({isOpen:true})} >
             <IonIcon slot="icon-only" icon ={help}>
             </IonIcon>
           </IonButton>
@@ -131,18 +131,18 @@ const QuestionModal:React.FC<any> = ({isOpen, onClose}) => {
             <IonTitle>
               Welcome to the Open Pantry
             </IonTitle>
-            <IonButton slot ="end" onClick={onClose} >
+            <IonButton color= "secondary" slot ="end" onClick={onClose} >
               <IonIcon slot= "icon-only" icon ={close}>
               </IonIcon>
             </IonButton>
           </IonToolbar>
         </IonHeader>
         <IonContent className ="ion-padding">
-          <IonText color= "secondary">
+          <IonText>
             <h3>
               Welcome to the Mac Open Pantry! This is a textbox for more
               info about the Open Pantry and things like that. Can't find an item? Request 
-              an item or make suggestions <IonRouterLink color= "primary" href="https://forms.gle/yjcNm1owrxcMzsxx7" target="_blank">here!</IonRouterLink>
+              an item or make suggestions <IonRouterLink color= "secondary" href="https://forms.gle/yjcNm1owrxcMzsxx7" target="_blank">here!</IonRouterLink>
             </h3>
           </IonText>
         </IonContent>
