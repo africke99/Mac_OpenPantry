@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { IonContent, IonModal, IonFooter, IonHeader, IonItem, IonLabel, IonNote, IonPage, IonTitle, IonToolbar, IonList, IonButton, IonFab, IonIcon, IonFabButton, IonApp, IonBackButton } from '@ionic/react';
+import { IonContent, IonModal, IonFooter, IonHeader, IonItem, IonLabel, IonNote, IonPage, IonTitle, IonToolbar, IonList, IonButton, IonFab, IonIcon, IonFabButton, IonApp, IonBackButton, IonButtons } from '@ionic/react';
 import ExploreContainer from '../components/ExploreContainer';
 import './Tab1.css';
 import InventoryDisplay from '../components/InventoryDisplay';
@@ -81,9 +81,9 @@ const Tab1: React.FC = () => {
       <IonPage>
         <IonContent fullscreen>
          <IonToolbar>
-           <IonButton slot="start">
-             <IonBackButton />
-           </IonButton>
+           <IonButtons slot="start">
+             <IonBackButton defaultHref="/homepage" />
+           </IonButtons>
            <IonTitle>Pantry Inventory</IonTitle>
        
           </IonToolbar>
