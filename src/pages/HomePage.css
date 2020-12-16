@@ -8,3 +8,8 @@
 .container img{
     height: auto; 
 }
+
+.card-padding{
+    top:  50%;
+
+}

@@ -18,7 +18,8 @@ import {
   IonCardContent,
   IonPage,
   IonLabel,
-  IonItem
+  IonItem,
+  IonList
 } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import { close} from 'ionicons/icons';
@@ -62,23 +63,16 @@ const HomePage: React.FC = () => {
           </div>
           <IonCard>
            <IonCardHeader>
-              {/* <IonCardTitle>Testing out text placement </IonCardTitle> */}
             </IonCardHeader>
-            <IonCardContent>
-              <IonButton size="large" onClick={() => {
+            <IonCardContent className= "card-padding">
+              <IonButton  expand="block" className= "btn-padding" size="large" onClick={() => {
                   history.push('/tab1')
             }}>View Pantry Inventory</IonButton>
              <IonItem>
                <IonLabel> 
-                 Admin? Log in here!
+                 Admin? Log in <IonRouterLink color= "secondary" href="https://idp.quicklaunchsso.com/macalester" target="_blank">here!</IonRouterLink>
                </IonLabel>
              </IonItem>
-             {/* <IonItem button onClick={() => { }}>
-          <IonLabel>
-            here.
-          </IonLabel>
-        </IonItem> */}
-            {/* <h2> Admin? Log in here</h2> */}
             </IonCardContent>
           </IonCard>
         </IonContent>
