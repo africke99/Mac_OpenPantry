@@ -89,17 +89,10 @@ const Tab1: React.FC = () => {
       <IonPage>
         <IonContent fullscreen>
          <IonToolbar>
-<<<<<<< HEAD
-           <IonButtons slot="start">
-             <IonBackButton defaultHref="/homepage" />
-           </IonButtons>
-           <IonTitle>Pantry Inventory</IonTitle>
-=======
            <IonButton slot="start">
              <IonBackButton />
            </IonButton>
            <IonTitle color="secondary">Pantry Inventory</IonTitle>
->>>>>>> 027a7d1908ec0537677867e761bca5b97a1cbdf7
        
           </IonToolbar>
       
