@@ -48,33 +48,35 @@ import '@ionic/react/css/display.css';
 /* Theme variables */
 import '../theme/variables.css';
 
-const HomePage = () => {
+const HomePage: React.FC = () => {
     
   const history = useHistory();
 
   return(
-    <IonPage>
-      <IonHeader>
-        <IonToolbar color="primary">
-          <IonTitle>Macalester Open Pantry</IonTitle>
-        </IonToolbar>
-      </IonHeader>
-      <IonContent>
-        <IonCard>
-          <IonCardHeader>
-            <IonCardSubtitle>Welcome to the Open Pantry</IonCardSubtitle>
-            <IonCardTitle>Testing out text placement </IonCardTitle>
-          </IonCardHeader>
-          <IonCardContent>
-            <p>Sounds like a great idea. Click the button below!</p>
-  
-            <IonButton onClick={() => {
+    <IonApp>
+      <IonPage>
+        <IonHeader>
+          <IonToolbar>
+            <IonTitle>Macalester Open Pantry</IonTitle>
+          </IonToolbar>
+        </IonHeader>
+
+        <IonContent fullscreen>
+          <IonCard>
+           <IonCardHeader>
+              <IonCardSubtitle>Welcome to the Open Pantry</IonCardSubtitle>
+              <IonCardTitle>Testing out text placement </IonCardTitle>
+            </IonCardHeader>
+            <IonCardContent>
+            <p>Testing Hello World </p>
+              <IonButton onClick={() => {
                   history.push('/tab1')
             }}>View Pantry Inventory</IonButton>
-          </IonCardContent>
-        </IonCard>
-      </IonContent>
-    </IonPage>
+            </IonCardContent>
+          </IonCard>
+        </IonContent>
+      </IonPage>
+    </IonApp>
   );
 };
   export default HomePage;

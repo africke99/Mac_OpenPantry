@@ -19,7 +19,7 @@ import {
   IonRouterLink,
   IonPage
 } from '@ionic/react';
-import { IonReactRouter } from '@ionic/react-router';
+import { IonReactRouter, IonReactHashRouter } from '@ionic/react-router';
 import { close, help, fileTrayFullOutline,} from 'ionicons/icons';
 import Tab1 from '../pages/Tab1';
 import HomePage from '../pages/HomePage';
@@ -59,27 +59,28 @@ import '../theme/variables.css';
 //     }
 //   }
 
-
 const App: React.FC = () => {
 
   const [questionModal, setQuestionModal] = useState({ isOpen: false });
 
   return(
   <IonApp>
-    <IonReactRouter>
+
+    {/* <IonReactRouter>
       <IonPage id="main">
         <IonRouterOutlet>
-          <Route path="/tab1" component={Tab1} exact={true}/>
-          <Route path= "/HomePage" component={HomePage} exact={true}/>
+          <Route path="/tab1" component={Tab1} exact={true}/> */}
+          {/* <Route path= "/HomePage" component={HomePage} exact={true}/> */}
           {/* <Route path= "/HomePage/tab1" component={Tab1} exact={true}/> */}
-          <Route
+          {/* <Route
             path="/"
             render= {() => <Redirect to="/HomePage" />}
             exact={true}
             />
         </IonRouterOutlet>
       </IonPage>
-      </IonReactRouter>
+      </IonReactRouter> */}
+
     <IonHeader>
       <IonToolbar color= "secondary">
         <IonTitle color="primary">Macalester Pantry</IonTitle>
@@ -92,6 +93,7 @@ const App: React.FC = () => {
       </IonToolbar>
     </IonHeader>
    
+
 {/* // Create a popup message with the help  icon so we only have checkout on the bottom. */}
     <IonContent>
       <QuestionModal isOpen={questionModal.isOpen} 
@@ -103,20 +105,14 @@ const App: React.FC = () => {
         </IonButton>
       </IonButtons>
      
-        <IonReactRouter>
-        <IonTabs>
+        <IonReactHashRouter>
+        {/* <IonTabs> */}
           <IonRouterOutlet >
             <Route path="/tab1" component={Tab1} exact={true} />
-            <Route path="/" render={() => <Redirect to="/tab1" />} exact={true} />
+            <Route path="/homepage" component= {HomePage} exact={true}/>
+            <Route path="/" render={() => <Redirect to="/homepage" />} exact={true} />
           </IonRouterOutlet>
-          <IonTabBar slot="bottom">
-            <IonTabButton tab="tab1" href="/tab1">
-              <IonIcon icon={fileTrayFullOutline} />
-              <IonLabel>Inventory</IonLabel>
-            </IonTabButton>
-          </IonTabBar>
-        </IonTabs>
-      </IonReactRouter>
+      </IonReactHashRouter>
       </IonContent>
   </IonApp>
    );

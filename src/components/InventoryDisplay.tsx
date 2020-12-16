@@ -22,12 +22,15 @@ import "./InventoryDisplay.css";
         subItems?: {[category: string]: string[] | undefined;};
         updateBag?: Function;
     }
-  
+
 
     const NumberList: React.FC<Item> = (item) => {
         const [showAlert1, setShowAlert1] = useState(false);
         const [clickedItemName, setclickedItemName ] = useState("");
+        
+
         const { itemName,subItems,updateBag } = item;
+        
 
         //setShowAlert1(true)
 

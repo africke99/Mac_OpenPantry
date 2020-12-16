@@ -1,4 +1,5 @@
 {
+  "homepage": "https://africke99.github.io/Mac_OpenPantry.github.io",
   "name": "pantryApp",
   "version": "0.0.1",
   "private": true,
@@ -20,6 +21,7 @@
     "@types/react-router-dom": "^5.1.3",
     "cordova-plugin-firebase": "^2.0.5",
     "firebase": "^8.1.1",
+    "gh-pages": "^3.1.0",
     "google-spreadsheet": "^3.0.13",
     "googleapis": "^65.0.0",
     "ionicons": "^5.0.0",
@@ -31,6 +33,8 @@
     "typescript": "3.8.3"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
