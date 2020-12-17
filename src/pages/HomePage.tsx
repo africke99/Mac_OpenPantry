@@ -61,10 +61,10 @@ const HomePage: React.FC = () => {
           <div className="container">
             <img src={logo} alt="logo" />
           </div>
-          <IonCard>
+          <IonCard className= "card-padding">
            <IonCardHeader>
             </IonCardHeader>
-            <IonCardContent className= "card-padding">
+            <IonCardContent>
               <IonButton  expand="block" className= "btn-padding" size="large" onClick={() => {
                   history.push('/tab1')
             }}>View Pantry Inventory</IonButton>
