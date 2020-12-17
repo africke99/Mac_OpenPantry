@@ -41,7 +41,7 @@ Anyone is welcome to visit and take what they need.
 
 ## Build Status (as of 12/17/2020)
 
-### Admin side access:
+#### Admin side access:
 - Be able to add items/categories to the database
 - Track frequency of items taken
 - Track date/times/frequency of pantry visitors
