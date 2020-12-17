@@ -41,12 +41,12 @@ Anyone is welcome to visit and take what they need.
 
 ## Build Status (as of 12/17/2020)
 
-# Admin side access:
+### Admin side access:
 - Be able to add items/categories to the database
 - Track frequency of items taken
 - Track date/times/frequency of pantry visitors
 - Printable form that shows all totals
-# Future Implementations
+#### Future Implementations
 - Fix formatting/font type/font+button sizes
 - Integrate Local API (refresh danger)
 - Add/Subtract item quantities in “My Bag”
@@ -67,11 +67,7 @@ Anyone is welcome to visit and take what they need.
 
 - [Guidance for Using Typescript](https://www.typescriptlang.org/)
 
-<<<<<<< HEAD
-- [Ionic documentation for UI components](https://ionicframework.com/docs/components)
-=======
 - [Modal Tutorial](https://www.youtube.com/watch?v=Ez-1P8VhQiQ&t=363s&ab_channel=AaronSaunders)
->>>>>>> 37d63fc40fc6c21246f730f8a7c77b263dec2d05
 
 
 ## Developed By
