@@ -1,32 +1,11 @@
 import React, { useState } from 'react';
-import { Redirect, Route } from 'react-router-dom';
 import {
-  IonApp,
-  IonButtons,
-  IonHeader,
-  IonIcon,
-  IonTitle,
-  IonToolbar, 
-  IonContent,
-  IonButton,
-  IonModal,
-  IonText,
-  IonRouterLink,
-  IonCard,
-  IonCardHeader,
-  IonCardTitle,
-  IonCardContent,
-  IonPage,
-  IonLabel,
-  IonItem,
-  IonList
-} from '@ionic/react';
-import { IonReactRouter } from '@ionic/react-router';
+        IonApp, IonHeader, IonIcon, IonTitle, IonToolbar, IonContent, IonButton, IonModal, IonText, IonRouterLink, IonCard, IonCardHeader, IonCardContent, IonPage, IonLabel, IonItem,
+      } from '@ionic/react';
 import { close} from 'ionicons/icons';
 import {useHistory } from "react-router";
 import './HomePage.css';
-import logo from './UPantryLogo-02.png';
-
+import logo from './pantryLogo.png';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';

@@ -39,6 +39,20 @@ Anyone is welcome to visit and take what they need.
 - In terminal: `git subtree push --prefix dist origin gh-pages`
 - Use the link in gitHub settings to navigate to your deployed web app!
 
+## Build Status (as of 12/17/2020)
+
+# Admin side access:
+- Be able to add items/categories to the database
+- Track frequency of items taken
+- Track date/times/frequency of pantry visitors
+- Printable form that shows all totals
+# Future Implementations
+- Fix formatting/font type/font+button sizes
+- Integrate Local API (refresh danger)
+- Add/Subtract item quantities in “My Bag”
+- Integrate food icons for easier non-english speaker use
+- Buy original domain name
+
 ## References Used in Development
 
 - [Firebase Tutorial](https://www.robinwieruch.de/complete-firebase-authentication-react-tutorial#manage-users-with-firebases-realtime-database-in-react)
@@ -53,6 +67,8 @@ Anyone is welcome to visit and take what they need.
 
 - [Guidance for Using Typescript](https://www.typescriptlang.org/)
 
+- [Ionic documentation for UI components](https://ionicframework.com/docs/components)
+
 
 ## Developed By
 - Craveiro, Lila
@@ -63,6 +79,6 @@ Anyone is welcome to visit and take what they need.
 ## With the Help Of
 - Professor Lauren Milne
 - Professor Paul Canterell
-- Nugen, Ahn
-- Tran, Richard
+- Nguyen, Anh
+- Tian, Richard
 
