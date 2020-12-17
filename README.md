@@ -53,6 +53,8 @@ Anyone is welcome to visit and take what they need.
 
 - [Guidance for Using Typescript](https://www.typescriptlang.org/)
 
+- [Modal Tutorial](https://www.youtube.com/watch?v=Ez-1P8VhQiQ&t=363s&ab_channel=AaronSaunders)
+
 
 ## Developed By
 - Craveiro, Lila
