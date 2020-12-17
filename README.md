@@ -3,7 +3,7 @@ A web app to facilitate the organization of Mac Open Pantry
 
 ## About
 
-As students in the "Software Development" course in the Macalester Computer Science Department, we recognized the need for automation of the pantry's inventory. Prior to this app, students were required to fill out a paper form about their visit. The app provides a backend database for organizing the pantry's inventory usinf Firebase's firestore. 
+As students in the "Software Development" course in the Macalester Computer Science Department, we recognized the need for automation of the pantry's inventory. Prior to this app, students were required to fill out a paper form about their visit. The app provides a backend database for organizing the pantry's inventory using Firebase's firestore. 
 The Macalester College Open Pantry is located in the bottom floor of the Ruth Stricker Dayton Campus Center.
 Anyone is welcome to visit and take what they need.
 
